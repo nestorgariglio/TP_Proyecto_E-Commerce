@@ -72,7 +72,7 @@ TP_Proyecto_E-Commerce/
    ```
 
 2. **Configurar el entorno**:
-   - Renombrar el archivo `.env.example` a `.env`
+   - Renombrar el archivo `env.example` a `env`
    - Asegurarse de tener:  
      ```env
      CI_ENVIRONMENT = development
