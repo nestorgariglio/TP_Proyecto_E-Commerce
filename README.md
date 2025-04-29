@@ -34,6 +34,7 @@ El proyecto está desarrollado utilizando el framework **CodeIgniter 4** y tecno
 El proyecto sigue la estructura estándar de CodeIgniter 4:
 Aquí tienes el contenido completo del archivo README.md correctamente formateado para que puedas copiarlo y aplicarlo directamente:
 
+```markdown
 ## Descripción del Proyecto
 
 **Quelac** es un proyecto de comercio electrónico diseñado para ofrecer productos alimenticios de alta calidad, como quesos, fiambres y otros productos refrigerados premium. Este sitio web permite a los usuarios explorar productos, realizar búsquedas, y acceder a información sobre la empresa, términos y condiciones, y contacto.
@@ -66,6 +67,7 @@ El proyecto está desarrollado utilizando el framework **CodeIgniter 4** y tecno
 ## Estructura del Proyecto
 
 El proyecto sigue la estructura estándar de CodeIgniter 4:
+```
 
 TP_Proyecto_E-Commerce/
 ├── app/
@@ -80,14 +82,15 @@ TP_Proyecto_E-Commerce/
 ├── writable/ # Archivos generados por la aplicación (logs, caché)
 └── .env # Configuración de entorno
 
+````
+
 ---
 
 ## Instalación y Configuración
-
 1. **Clonar el repositorio**:
-
-   bash
+   ```bash
    git clone https://github.com/tu-usuario/TP_Proyecto_E-Commerce.git
+````
 
 2. **Configurar el entorno**:
 
@@ -97,15 +100,19 @@ TP_Proyecto_E-Commerce/
 3. **Instalar dependencias**:
    Si usas Composer, instala las dependencias ejecutando:
 
-   bash
+   ```bash
    composer install
+   ```
 
 4. **Iniciar el servidor local**:
    Si usas XAMPP, coloca el proyecto en la carpeta `htdocs` y accede a:
-
+   ```
    http://localhost/TP_Proyecto_E-Commerce/public
+   ```
 
 ---
+
+## Uso
 
 ### Navegación
 
@@ -121,7 +128,7 @@ TP_Proyecto_E-Commerce/
 
 ## Créditos
 
-- **Desarrollador**: [Tu Nombre]
+- **Desarrollador**: Gariglio, Nestor David
 - **Framework**: CodeIgniter 4
 - **Diseño**: Bootstrap 5
 
