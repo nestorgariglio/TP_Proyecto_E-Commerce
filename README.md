@@ -68,7 +68,7 @@ TP_Proyecto_E-Commerce/
 
 1. **Clonar el repositorio**:
    ```bash
-   git clone https://github.com/tu-usuario/TP_Proyecto_E-Commerce.git
+   git clone https://github.com/nestorgariglio/TP_Proyecto_E-Commerce.git
    ```
 
 2. **Configurar el entorno**:
