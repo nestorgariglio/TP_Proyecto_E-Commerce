@@ -108,7 +108,7 @@ TP_Proyecto_E-Commerce/
 
 ## 👤 Créditos
 
-- **Desarrollador:** Gariglio, Nestor David
+- **Desarrollador:** Gariglio, Nestor David y Zayas Luciano Andres
 - **Framework:** CodeIgniter 4
 - **Diseño visual:** Bootstrap 5
 
