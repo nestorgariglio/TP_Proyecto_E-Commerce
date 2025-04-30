@@ -1,6 +1,6 @@
 <header>
     <div class="d-flex flex-column align-items-center justify-content-center top text-white" style="background-color:#de062b; gap: 34px; height: auto; min-height: 180px;">
-        <div class="container">
+        <div class="container d-flex flex-column gap-4">
             <div class="row align-items-center justify-content-between">
                 <!-- Logo -->
                 <div class="col-12 col-md-3 text-center mb-3 mb-md-0">
@@ -32,7 +32,7 @@
                     <!-- Future buttons or links -->
                 </div>
             </div>
-            <div class="d-flex justify-content-around align-items-center w-100 h-100">
+            <div class="d-flex justify-content-around align-items-center w-100 h-100 mt-2">
                 <a href="#principal" class="text-decoration-none text-white">Principal</a>
                 <a href="#quienes-somos" class="text-decoration-none text-white">Quienes Somos</a>
                 <a href="#comercializacion" class="text-decoration-none text-white">Comercialización</a>
