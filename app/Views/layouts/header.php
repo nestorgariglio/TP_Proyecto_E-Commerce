@@ -32,19 +32,12 @@
                     <!-- Future buttons or links -->
                 </div>
             </div>
-        </div>
-
-        <!-- Navigation Links -->
-        <div class="container mt-3">
-            <div class="row">
-                <div class="col-12 d-flex justify-content-around flex-wrap gap-3">
-                    <a href="#principal" class="text-decoration-none text-white">Principal</a>
-                    <a href="#quienes-somos" class="text-decoration-none text-white">Quienes Somos</a>
-                    <a href="#comercializacion" class="text-decoration-none text-white">Comercialización</a>
-                    <a href="#contacto" class="text-decoration-none text-white">Contacto</a>
-                    <a href="#terminos" class="text-decoration-none text-white">Términos</a>
-                </div>
+            <div class="d-flex justify-content-around align-items-center w-100 h-100">
+                <a href="#principal" class="text-decoration-none text-white">Principal</a>
+                <a href="#quienes-somos" class="text-decoration-none text-white">Quienes Somos</a>
+                <a href="#comercializacion" class="text-decoration-none text-white">Comercialización</a>
+                <a href="#contacto" class="text-decoration-none text-white">Contacto</a>
+                <a href="#terminos" class="text-decoration-none text-white">Términos</a>
             </div>
         </div>
-    </div>
-</header>
+    </header>  
