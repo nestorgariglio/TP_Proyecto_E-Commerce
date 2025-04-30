@@ -16,7 +16,7 @@
 
     <!----------------------------------Principal----------------------------------->
 
-    <section>
+    <section id="principal">
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover">
       <div id="carouselExampleIndicators" class="carousel slide">
         <div class="carousel-indicators">
@@ -52,30 +52,30 @@
                 <div class="col-12 col-md-4">
                     <div class="card h-100">
                         <img src="/TP_Proyecto_E-Commerce/public/assets/img/delibery.avif" class="card-img-top img-fluid" alt="Delivery">
-                        <div class="card-body">
+                        <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Delivery</h5>
                             <p class="card-text">Delivery a domicilio en cts. Envío gratis dentro de las 4 av. o en compras superiores a $69999</p>
-                            <a href="#" class="btn btn-primary">Más información</a>
+                            <!-- <a href="#" class="btn btn-primary">Más información</a> -->
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="card h-100">
                         <img src="/TP_Proyecto_E-Commerce/public/assets/img/seguridad.png" class="card-img-top img-fluid" alt="Seguridad">
-                        <div class="card-body">
+                        <div class="card-body d-flex flex-column justify-content-end">
                             <h5 class="card-title">Seguridad</h5>
                             <p class="card-text">Seguridad alimentaria. Productos frescos, cuidando la cadena de frío.</p>
-                            <a href="#" class="btn btn-primary">Más información</a>
+                            <!-- <a href="#" class="btn btn-primary">Más información</a> -->
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="card h-100">
                         <img src="/TP_Proyecto_E-Commerce/public/assets/img/cartoe.png" class="card-img-top img-fluid" alt="Efectivo y Tarjetas">
-                        <div class="card-body">
+                        <div class="card-body d-flex flex-column justify-content-end">
                             <h5 class="card-title">Efectivo y Tarjetas</h5>
                             <p class="card-text">Pagá como quieras. Monto Mínimo de Compra $14.999</p>
-                            <a href="#" class="btn btn-primary">Más información</a>
+                            <!-- <a href="#" class="btn btn-primary">Más información</a> -->
                         </div>
                     </div>
                 </div>

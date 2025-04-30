@@ -1,5 +1,5 @@
  <!------------------------------------quienes somos---------------------------------->
- <section>
+ <section id="about">
       <div class="container py-4">
         <div class="row align-items-start g-4">
           <!-- Columna de textos -->

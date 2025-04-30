@@ -1,6 +1,6 @@
 <!------------------------------------Información de Contacto----------------------------------->
 
-<section class="container py-5">
+<section id="contact" class="container py-5">
     <h2 class="text-center mb-4" >Contáctenos</h2>
 
     <p class="text-danger fw-bold text-center fs-4" >¡Nos encanta escucharte!</p>

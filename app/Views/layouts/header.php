@@ -34,10 +34,10 @@
             </div>
             <div class="d-flex justify-content-around align-items-center w-100 h-100 mt-2">
                 <a href="#principal" class="text-decoration-none text-white">Principal</a>
-                <a href="#quienes-somos" class="text-decoration-none text-white">Quienes Somos</a>
-                <a href="#comercializacion" class="text-decoration-none text-white">Comercialización</a>
-                <a href="#contacto" class="text-decoration-none text-white">Contacto</a>
-                <a href="#terminos" class="text-decoration-none text-white">Términos</a>
+                <a href="#about" class="text-decoration-none text-white">Quienes Somos</a>
+                <a href="#commercialization" class="text-decoration-none text-white">Comercialización</a>
+                <a href="#contact" class="text-decoration-none text-white">Contacto</a>
+                <a href="#terms_and_use" class="text-decoration-none text-white">Términos</a>
             </div>
         </div>
     </header>  

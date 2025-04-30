@@ -1,6 +1,6 @@
     <!------------------------------------Términos y Usos------------------------------------>
 
-<section class="container py-5" id="terminos-uso">
+<section class="container py-5" id="terms_and_use">
     <h2 class="text-center mb-4" >Términos y Condiciones de Uso</h2>
 
     <div class="text-start" style="max-width: 900px; margin: 0 auto; font-size: 1rem; line-height: 1.7;" >

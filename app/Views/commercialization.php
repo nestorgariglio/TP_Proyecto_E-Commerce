@@ -1,5 +1,5 @@
 <!----------------------------------- Comercialización ------------------------------------>
-<section class="container py-5">
+<section id="commercialization" class="container py-5">
     <div class="row g-4">
         <!-- Columna izquierda -->
         <div class="col-12 col-lg-6">
