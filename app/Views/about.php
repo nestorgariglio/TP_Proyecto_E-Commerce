@@ -27,7 +27,7 @@
 
           <!-- Columna de imagen -->
           <div class="col-md-6 d-flex justify-content-center">
-            <img src="<?= base_url('assets/img/bienvenidos') ?>" class="img-fluid rounded-4 shadow" alt="Productos Quelac">
+            <img src="<?= base_url('assets/img/bienvenidos.jpeg') ?>" class="img-fluid rounded-4 shadow" alt="Productos Quelac">
           </div>
         </div>
       </div>
