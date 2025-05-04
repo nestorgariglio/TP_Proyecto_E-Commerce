@@ -13,9 +13,9 @@
             </div>
 
             <!-- Sección de contacto -->
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 d-flex flex-column align-items-center"> 
                 <h5 class="text-uppercase">Contacto</h5>
-                <ul class="list-unstyled">
+                <ul class="list-unstyled w-[30%] text-start">
                     <li><a href="#lucide-phone" class="text-decoration-none text-white"><i class="fa fa-phone me-2"></i> Teléfono</a></li>
                     <li><a href="#lucide-wpp" class="text-decoration-none text-white"><i class="fa fa-whatsapp me-2"></i> WhatsApp</a></li>
                     <li><a href="#correo" class="text-decoration-none text-white"><i class="fa fa-envelope me-2"></i> Correo</a></li>

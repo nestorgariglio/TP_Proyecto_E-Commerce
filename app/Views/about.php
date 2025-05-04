@@ -1,7 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link href="/TP_Proyecto_E-Commerce/public/assets/css/bootstrap/bootstrap.min.css" rel="stylesheet"> -->
+  <title>Quelac</title>
+</head>
+<body>
+  
  <!------------------------------------quienes somos---------------------------------->
  <section id="about">
       <div class="container py-4">
-        <div class="row align-items-start g-4">
+        <div class="row align-items-center g-4">
           <!-- Columna de textos -->
           <div class="col-md-6">
             <div class="p-4 rounded-4 shadow-dura border bg-light custom-shadow mb-5" style="font-family: 'Jeju Hallasan', cursive;">
@@ -17,7 +27,7 @@
 
           <!-- Columna de imagen -->
           <div class="col-md-6 d-flex justify-content-center">
-            <img src="/TP_Proyecto_E-Commerce/public/assets/img/vienvenidos.jpeg" class="img-fluid rounded-4 shadow" alt="Productos Quelac">
+            <img src="<?= base_url('assets/img/bienvenidos') ?>" class="img-fluid rounded-4 shadow" alt="Productos Quelac">
           </div>
         </div>
       </div>
@@ -28,3 +38,5 @@
         }
       </style>
     </section>
+</body>
+</html>
