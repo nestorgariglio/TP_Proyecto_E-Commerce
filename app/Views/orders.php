@@ -26,26 +26,29 @@
           </tr>
         </thead>
         <tbody>
-          <!-- Ejemplo de comprobante, reemplaza por un foreach PHP -->
+        <?php if (!empty($orders)): ?>
+          <?php foreach ($orders as $order): ?>
+            <tr>
+              <td><?= esc($order['id'])?></td>
+              <td><?= date('Y-m-d', strtotime($order['created_at'])) ?></td>
+              <td><?= esc($order['total'])?></td>
+              <td>
+                <?php if ($order['status'] === 'Pagado'): ?>
+                  <span class="badge bg-success">Pagado</span>
+                <?php else: ?>
+                  <span class="badge bg-secondary"><?= esc($order['status'])?></span>
+                <?php endif; ?>
+              </td>
+              <td>
+                <a href="<?= site_url('orders/' . $order['id']) ?>" class="btn btn-sm btn-primary" style="background-color: #cf172e;">Ver Detalle</a>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        <?php else: ?>
           <tr>
-            <td>1</td>
-            <td>2025-06-23</td>
-            <td>$2.500</td>
-            <td><span class="badge bg-success">Pagado</span></td>
-            <td>
-              <a href="<?= site_url('orders/1') ?>" class="btn btn-sm btn-primary" style="background-color: #cf172e;">Ver Detalle</a>
-            </td>
+            <td colspan="5" class="text-center">Aún no has realizado compras.</td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>2025-06-20</td>
-            <td>$1.200</td>
-            <td><span class="badge bg-secondary">Pendiente</span></td>
-            <td>
-              <a href="<?= site_url('orders/2') ?>" class="btn btn-sm btn-primary" style="background-color: #cf172e;">Ver Detalle</a>
-            </td>
-          </tr>
-          <!-- Fin ejemplo, repite o reemplaza por loop PHP -->
+        <?php endif; ?>
         </tbody>
       </table>
     </div>

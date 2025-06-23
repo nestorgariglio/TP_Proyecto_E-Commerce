@@ -26,38 +26,49 @@
           </tr>
         </thead>
         <tbody>
-          <!-- Ejemplo de producto, reemplaza por un foreach PHP -->
-          <tr>
-            <td class="d-flex align-items-center gap-3">
-              <img src="<?= base_url('assets/img/queso-ejemplo.jpg') ?>" alt="Queso Ejemplo" style="width: 60px; height: 60px; object-fit: cover;" class="rounded shadow-sm">
-              <span>Queso Ejemplo</span>
-            </td>
-            <td class="text-center">$999</td>
-            <td class="text-center">
-              <form method="post" action="<?= site_url('cart/update/1') ?>" class="d-inline">
-                <input type="number" name="quantity" value="1" min="1" class="form-control text-center" style="width: 70px; display: inline-block;">
-                <button type="submit" class="btn btn-sm btn-outline-secondary ms-1">Actualizar</button>
-              </form>
-            </td>
-            <td class="text-center">$999</td>
-            <td class="text-center">
-              <form method="post" action="<?= site_url('cart/remove/1') ?>" class="d-inline">
-                <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-              </form>
-            </td>
-          </tr>
-          <!-- Fin ejemplo, repite o reemplaza por loop PHP -->
+          <?php if(!empty($cart)): ?>
+            <?php $total = 0?>
+            <?php foreach($cart as $item): ?>
+              <?php $subtotal = $item['price'] * $item['quantity']; $total += $subtotal; ?>
+              <tr>
+                <td class="d-flex align-items-center gap-3">
+                  <img src="<?= esc($item['image']) ?>" alt="<?= esc($item['name'])?>" style="width: 60px; height: 60px; object-fit: cover;" class="rounded shadow-sm">
+                  <span><?= esc($item['name'])?></span>
+                </td>
+                <td class="text-center">$<?= esc($item['price'])?></td>
+                <td class="text-center">
+                  <form method="post" action="<?= site_url('cart/update/' . $item['id']) ?>" class="d-inline">
+                    <input type="number" name="quantity" value="<?= esc($item['quantity'])?>" min="1" class="form-control text-center" style="width: 70px; display: inline-block;">
+                    <button type="submit" class="btn btn-sm btn-outline-secondary ms-1">Actualizar</button>
+                  </form>
+                </td>
+                <td class="text-center">$<?= $subtotal?></td>
+                <td class="text-center">
+                  <form method="post" action="<?= site_url('cart/remove/' . $item['id']) ?>" class="d-inline">
+                    <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                  </form>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <tr>
+              <td colspan="5" class="text-center">Tu carrito está vacío.</td>
+            </tr>
+          <?php endif; ?>
         </tbody>
       </table>
     </div>
+
     <!-- Total y acciones -->
     <div class="d-flex flex-column flex-md-row justify-content-end align-items-end gap-3 mt-4">
       <div>
-        <h4>Total: <span class="fw-bold" style="color: #cf172e;">$999</span></h4>
+        <h4>Total: <span class="fw-bold" style="color: #cf172e;">$<?= isset($total) ? $total : 0?></span></h4>
       </div>
       <div class="d-flex gap-2">
         <a href="<?= site_url('catalog') ?>" class="btn btn-outline-secondary">Seguir comprando</a>
-        <a href="<?= site_url('checkout') ?>" class="btn btn-primary text-white" style="background-color: #cf172e;">Finalizar compra</a>
+        <?php if (!empty($cart)): ?>
+          <a href="<?= site_url('checkout') ?>" class="btn btn-primary text-white" style="background-color: #cf172e;">Finalizar compra</a>
+        <?php endif; ?>
       </div>
     </div>
   </section>

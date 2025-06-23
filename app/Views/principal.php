@@ -14,9 +14,9 @@
       <div class="card-img-overlay d-flex flex-column align-items-center justify-content-center px-2 px-md-5 mt-3 gap-2 gap-md-3">
         <h1 class="card-title text-center fw-bolder text-break">Descubre la Excelencia en Quesos y Fiambres</h1>
         <span class="card-text text-center text-break">En Sabores del Campo, seleccionamos cuidadosamente los mejores quesos y fiambres artesanales para deleitar tu paladar. Explora nuestra variedad y disfruta de sabores auténticos.</span>
-        <button class="btn btn-lg mt-2 mt-md-3 px-3" style="background-color: #cf172e;">
+        <a href="<?= site_url('catalog')?>" class="btn btn-lg mt-2 mt-md-3 px-3" style="background-color: #cf172e;">
           <span class="fw-medium fs-6 text-white">Explorar Productos</span>
-        </button>
+        </a>
       </div>
     </div>
     <div class="py-5 container">

@@ -13,13 +13,19 @@
     <!-- Datos generales de la orden -->
     <div class="row mb-4">
       <div class="col-12 col-md-6">
-        <div class="mb-2"><strong>Número de orden:</strong> #1</div>
-        <div class="mb-2"><strong>Fecha:</strong> 2025-06-23</div>
-        <div class="mb-2"><strong>Estado:</strong> <span class="badge bg-success">Pagado</span></div>
+        <div class="mb-2"><strong>Número de orden:</strong> #<?= esc($order['id']) ?></div>
+        <div class="mb-2"><strong>Fecha:</strong> <?= date('Y-m-d', strtotime($order['created_at'])) ?></div>
+        <div class="mb-2"><strong>Estado:</strong>
+          <?php if ($order['status'] === 'Pagado'): ?>
+            <span class="badge bg-success">Pagado</span>
+          <?php else: ?>
+            <span class="badge bg-secondary"><?= esc($order['status']) ?></span>
+          <?php endif; ?>        
+        </div>
       </div>
       <div class="col-12 col-md-6">
-        <div class="mb-2"><strong>Total:</strong> <span style="color: #cf172e;" class="fw-bold">$2.500</span></div>
-        <div class="mb-2"><strong>Método de pago:</strong> Tarjeta de crédito</div>
+        <div class="mb-2"><strong>Total:</strong> <span style="color: #cf172e;" class="fw-bold">$<?= esc($order['total']) ?></span></div>
+        <div class="mb-2"><strong>Método de pago:</strong> <?= esc($order['status']) ?></div>
       </div>
     </div>
     <!-- Productos de la orden -->
@@ -34,31 +40,19 @@
           </tr>
         </thead>
         <tbody>
-          <!-- Ejemplo de producto, reemplaza por un foreach PHP -->
-          <tr>
-            <td class="d-flex align-items-center gap-3">
-              <img src="<?= base_url('assets/img/queso-ejemplo.jpg') ?>" alt="Queso Ejemplo" style="width: 60px; height: 60px; object-fit: cover;" class="rounded shadow-sm">
-              <span>Queso Ejemplo</span>
-            </td>
-            <td class="text-center">$999</td>
-            <td class="text-center">2</td>
-            <td class="text-center">$1.998</td>
-          </tr>
-          <tr>
-            <td class="d-flex align-items-center gap-3">
-              <img src="<?= base_url('assets/img/fiambre-ejemplo.jpg') ?>" alt="Fiambre Ejemplo" style="width: 60px; height: 60px; object-fit: cover;" class="rounded shadow-sm">
-              <span>Fiambre Ejemplo</span>
-            </td>
-            <td class="text-center">$502</td>
-            <td class="text-center">1</td>
-            <td class="text-center">$502</td>
-          </tr>
-          <!-- Fin ejemplo, repite o reemplaza por loop PHP -->
+          <?php foreach ($items as $item): ?>
+            <tr>
+              <td><?= esc($item['name']) ?></td>
+              <td class="text-center">$<?= esc($item['price']) ?></td>
+              <td class="text-center"><?= esc($item['quantity']) ?></td>
+              <td class="text-center">$<?= $item['price'] * $item['quantity'] ?></td>
+            </tr>
+          <?php endforeach; ?>
         </tbody>
         <tfoot>
           <tr>
             <td colspan="3" class="text-end fw-bold">Total:</td>
-            <td class="text-center fw-bold" style="color: #cf172e;">$2.500</td>
+            <td class="text-center fw-bold" style="color: #cf172e;">$<?= esc($order['total']) ?></td>
           </tr>
         </tfoot>
       </table>

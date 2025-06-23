@@ -12,7 +12,7 @@
     <div class="container align-items-center d-flex flex-column gap-3">
       <div class="col-12 col-md-6 border rounded-3 shadow-sm align-items-center d-flex flex-column" style="padding: 4rem;">
         <h2 class="fw-bold fs-2">Inicie Sesión</h2>
-          <form action="submit" class="d-flex flex-column align-items-center gap-3 p-1 w-100">
+          <form action="<?= site_url('login') ?>" method='post' class="d-flex flex-column align-items-center gap-3 p-1 w-100">
             <div class="w-100 d-flex flex-column align-items-center gap-3">
               <div class="mb-3 w-75 w-sm-100">
                 <label for="email" class="form-label">Correo Electrónico</label>

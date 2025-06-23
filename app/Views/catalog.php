@@ -8,8 +8,8 @@
   <title>Quelac</title>
 </head>
 <body>
-  <section class="container-fluid d-flex flex-column align-items-center p-0 m-0" style="padding-top: 10rem;">
-    <div class="container">
+  <section class="container-fluid d-flex flex-column align-items-center p-0 m-0">
+    <div class="container" style="padding-top: 6rem;">
       <!-- Filtros -->
       <form method="get" class="row g-2 mb-4">
         <div class="col-12 col-md-4">
@@ -28,30 +28,24 @@
       </form>
       <!-- Grilla de productos -->
       <div class="row g-4">
-        <!-- Ejemplo de producto, reemplaza por un foreach PHP -->
-        <div class="col-12 col-sm-6 col-lg-4">
-          <div class="card h-100 shadow-sm">
-            <img src="<?= base_url('assets/img/queso-ejemplo.jpg') ?>" class="card-img-top img-fluid" alt="Queso Ejemplo">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Queso Ejemplo</h5>
-              <p class="card-text">Queso artesanal de vaca, sabor suave y textura cremosa.</p>
-              <span class="fw-bold mb-2">$999</span>
-              <a href="<?= site_url('products/1') ?>" class="btn btn-primary mt-auto" style="background-color: #cf172e;">Ver Detalles</a>
+        <?php if (!empty($products)): ?>
+          <?php foreach ($products as $product): ?>
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="card h-100 shadow-sm">
+                <img src="<?= esc($product['image'])?>" alt="<?= esc($product['name']) ?>" class="card-img-top img-fluid">
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title"><?= esc($product['description'])?></h5>
+                  <span class="fw-bold mb-2"><?= esc($product['price']) ?></span>
+                  <a href="<?= site_url('product/' . $product['id'])?>" class="btn btn-primary mt-auto" style="background-color: #cf172e;">Ver Detalles</a>
+                </div>
+              </div>
             </div>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <div class="col-12">
+            <div class="alert alert-info">No se encontraron productos.</div>
           </div>
-        </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-          <div class="card h-100 shadow-sm">
-            <img src="<?= base_url('assets/img/fiambre-ejemplo.jpg') ?>" class="card-img-top img-fluid" alt="Fiambre Ejemplo">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Fiambre Ejemplo</h5>
-              <p class="card-text">Fiambre artesanal, ideal para picadas y tablas.</p>
-              <span class="fw-bold mb-2">$850</span>
-              <a href="<?= site_url('products/2') ?>" class="btn btn-primary mt-auto" style="background-color: #cf172e;">Ver Detalles</a>
-            </div>
-          </div>
-        </div>
-        <!-- Fin ejemplo, repite o reemplaza por loop PHP -->
+        <?php endif; ?>
       </div>
     </div>
   </section>

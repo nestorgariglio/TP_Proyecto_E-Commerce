@@ -34,30 +34,6 @@ class ViewsController extends BaseController
     echo view('/layouts/footer');
   }
 
-  public function loginView() {
-    echo view('/layouts/header');
-    echo view('login');
-    echo view('/layouts/footer');
-  }
-
-  public function registerView() {
-    echo view('/layouts/header');
-    echo view('register');
-    echo view('/layouts/footer');
-  }
-
-  public function catalog() {
-    echo view('/layouts/header');
-    echo view('catalog');
-    echo view('/layouts/footer');
-  }
-
-  public function product() {
-    echo view('/layouts/header');
-    echo view('product');
-    echo view('/layouts/footer');
-  }
-
   public function cart() {
     echo view('/layouts/header');
     echo view('cart');
