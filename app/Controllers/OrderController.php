@@ -76,9 +76,8 @@ class OrderController extends Controller
         $nuevoStock = max(0, $product['stock'] - $item['quantity']);
         $productModel->update($item['id'], ['stock' => $nuevoStock]);
         if ($nuevoStock === 0) {
-          $updateData['is_active'] = 0;
+          $product->update($item['id'], ['is_active' => 0]);
         }
-        $productModel->update($item['id'], $updateData);
       }
     }
 

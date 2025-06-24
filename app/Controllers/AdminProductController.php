@@ -55,7 +55,7 @@ class AdminProductController extends Controller
         $data['image'] = $cloudinaryUrl;
       } elseif (!in_array($imageFile->getMimeType(), ['image/jpeg', 'image/png', 'image/webp'])) {
         return redirect()->back()->with('error', 'Solo se permiten imágenes JPG, PNG o WEBP.');
-      } elseif ($imageFile->getSize() > 5 * 1024 * 1024) {
+      } elseif ($imageFile->getSize() > 2 * 1024 * 1024) {
           return redirect()->back()->with('error', 'La imagen no debe superar los 2MB.');
       } else {
         return redirect()->back()->with('error', 'Error al subir la imagen a Cloudinary.');
