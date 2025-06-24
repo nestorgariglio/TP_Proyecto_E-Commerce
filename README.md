@@ -17,7 +17,7 @@ Los usuarios pueden explorar productos, acceder a información institucional, co
 ## 🚧 Entregas del Proyecto
 
 - ✅ **Primera Parte**: Maquetado completo del frontend (responsive, sin lógica de negocio).
-- 🔄 **Segunda Parte**: Se agregarán funcionalidades dinámicas (catálogo de productos, búsquedas, formularios conectados, etc.).
+- ✅ **Segunda Parte**: Se agregarán funcionalidades dinámicas (catálogo de productos, búsquedas, formularios conectados, etc.).
 
 ---
 

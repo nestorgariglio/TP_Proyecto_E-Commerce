@@ -21,11 +21,13 @@ body {
   transform: scale(1.05);
   transition: transform 0.2s;
 }
+
 @media (max-width: 576px) {
   .card-img {
     min-height: 320px;
     object-fit: cover;
   }
+
   .card-img-overlay {
     padding: 1rem !important;
     overflow-y: auto;
@@ -34,15 +36,18 @@ body {
     flex-direction: column;
     justify-content: center;
   }
+
   .card-title,
   .card-text {
     font-size: 1rem;
     word-break: break-word;
   }
+
   .card-title {
     margin-bottom: 0.5rem;
   }
 }
+
 @media (min-width: 992px) {
   .card-img {
     max-height: 400px;

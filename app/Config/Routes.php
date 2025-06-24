@@ -15,10 +15,10 @@ $routes->get('/terms', 'ViewsController::terms');
 
 
 
-$routes->get('/order_detail', 'ViewsController::order_detail');
-$routes->get('/admin-products', 'ViewsController::adminProducts');
-$routes->get('/admin-products/add', 'ViewsController::adminProductForm');
-$routes->get('/admin-products/edit/(:num)', 'ViewsController::adminProductForm/$1');
+// $routes->get('/order_detail', 'ViewsController::order_detail');
+// $routes->get('/admin-products', 'ViewsController::adminProducts');
+// $routes->get('/admin-products/add', 'ViewsController::adminProductForm');
+// $routes->get('/admin-products/edit/(:num)', 'ViewsController::adminProductForm/$1');
 
 
 
@@ -47,3 +47,12 @@ $routes->post('/checkout/process', 'OrderController::process');
 // Rutas para los comprobantes
 $routes->get('/orders', 'OrderController::list');
 $routes->get('/orders/(:num)', 'OrderController::detail/$1');
+
+//Rutas del Admin
+$routes->get('/admin-products', 'AdminProductController::index');
+$routes->get('/admin/products/create', 'AdminProductController::create');
+$routes->post('/admin/products/save', 'AdminProductController::save');
+$routes->get('/admin/products/edit/(:num)', 'AdminProductController::edit/$1');
+$routes->post('/admin/products/update/(:num)', 'AdminProductController::update/$1');
+$routes->post('/admin/products/delete/(:num)', 'AdminProductController::delete/$1');
+$routes->post('/admin/products/active/(:num)', 'AdminProductController::active/$1');

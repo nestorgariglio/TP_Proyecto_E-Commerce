@@ -29,8 +29,12 @@
               <button class="btn btn-light dropdown-toggle text-center d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="padding-top: 11px; padding-bottom: 11px; padding-left: 9px; padding-right: 9px;">
                 <i class="fa-solid fa-user" style="font-size: 13px;"></i>
               </button>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                <li><a href="<?= site_url('orders')?>" class="dropdown-item">Mis Compras</a></li>
+              <ul class="dropdown-menu dropdown" aria-labelledby="userDropdown">
+                <?php if(session('user_role') === 'admin'): ?>
+                  <li><a href="<?= site_url('admin-products')?>" class="dropdown-item">Gestión Productos</a></li>
+                <?php else: ?>
+                  <li><a href="<?= site_url('orders')?>" class="dropdown-item">Mis Compras</a></li>
+                <?php endif; ?>
                 <li><a href="<?= site_url('logout')?>" class="dropdown-item">Cerrar Sesión</a></li>
               </ul>
             </div>

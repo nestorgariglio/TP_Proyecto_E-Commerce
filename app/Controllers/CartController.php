@@ -61,7 +61,7 @@ class CartController extends Controller
     // y así evitar errores si el producto no está en el carrito.
     // max(1, $quantity) asegura que la cantidad mínima sea 1.
     if (isset($cart[$productId])) {
-      $cart[$productId]['quiantity'] = max(1, $quantity);
+      $cart[$productId]['quantity'] = max(1, $quantity);
       session()->set('cart', $cart);
     }
 

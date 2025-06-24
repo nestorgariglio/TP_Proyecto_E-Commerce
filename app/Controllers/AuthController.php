@@ -50,7 +50,7 @@ class AuthController extends Controller
       ]);
       return redirect()->to('/')->with('success', 'Inicio de sesión exitoso.');
     } else {
-      return redirect()->back()->with('error', 'Credenciales incorrectas. Por favor, intente de nuevo.');
+      return redirect()->to('/login')->with('error', 'Credenciales incorrectas. Por favor, intente de nuevo.');
     }
   }
 

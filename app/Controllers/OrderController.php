@@ -36,6 +36,16 @@ class OrderController extends Controller
       return redirect()->to('/login')->with('error', 'Debes iniciar sesión para comprar');
     }
 
+    $productModel = new ProductModel();
+
+    // Se revisa si hay stock para la compra
+    foreach ($cart as $item) {
+      $product = $productModel->find($item['id']);
+      if (!$product || $product['stock'] < $item['quantity']) {
+        return redirect()->to('/cart')->with('error', 'No hay suficiente stock para el producto ' . $product['name']);
+      }
+    }
+
     $userId = session('user_id');
     $total = 0;
     foreach ($cart as $item) {
@@ -59,6 +69,17 @@ class OrderController extends Controller
         'price' => $item['price'],
         'quantity' => $item['quantity'],
       ]);
+
+      // Se descuenta del stock
+      $product = $productModel->find($item['id']);
+      if ($product) {
+        $nuevoStock = max(0, $product['stock'] - $item['quantity']);
+        $productModel->update($item['id'], ['stock' => $nuevoStock]);
+        if ($nuevoStock === 0) {
+          $updateData['is_active'] = 0;
+        }
+        $productModel->update($item['id'], $updateData);
+      }
     }
 
     session()->remove('cart');
