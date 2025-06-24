@@ -13,7 +13,7 @@
       <img src="https://res.cloudinary.com/dzv36wzmx/image/upload/v1748896651/fiambre-hero_rhqrid.svg" class="card-img img-fluid w-100" alt="...">
       <div class="card-img-overlay d-flex flex-column align-items-center justify-content-center px-2 px-md-5 mt-3 gap-2 gap-md-3">
         <h1 class="card-title text-center fw-bolder text-break">Descubre la Excelencia en Quesos y Fiambres</h1>
-        <span class="card-text text-center text-break">En Sabores del Campo, seleccionamos cuidadosamente los mejores quesos y fiambres artesanales para deleitar tu paladar. Explora nuestra variedad y disfruta de sabores auténticos.</span>
+        <span class="card-text text-center text-break">En Quelac, seleccionamos cuidadosamente los mejores quesos y fiambres para deleitar tu paladar. Explora nuestra variedad y disfruta de sabores auténticos.</span>
         <a href="<?= site_url('catalog')?>" class="btn btn-lg mt-2 mt-md-3 px-3" style="background-color: #cf172e;">
           <span class="fw-medium fs-6 text-white">Explorar Productos</span>
         </a>
@@ -59,7 +59,7 @@
     </div>
     <div class="py-2 container">
       <h3 class="w-100 text-start fs-4 fw-bold">Sobre Nosotros</h3>
-      <p>En Sabores del Campo, somos apasionados por los productos artesanales de alta calidad. Trabajamos directamente con productores locales para ofrecerte lo mejor de nuestra tierra. Nuestra misión es llevar a tu mesa sabores auténticos y experiencias culinarias inolvidables.</p>
+      <p>En Quelac nos dedicamos a la comercialización de quesos, fiambres y productos refrigerados premium. Ofrecemos calidad, frescura y precios competitivos, con una atención cercana y personalizada que garantiza la mejor experiencia para tu hogar o negocio.</p>
     </div>
   </section>
 
