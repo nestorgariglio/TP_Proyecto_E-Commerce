@@ -10,6 +10,8 @@ use CodeIgniter\Controller;
 
 class OrderController extends Controller
 {
+
+  // Muestra la página de checkout
   public function checkout() {
 
     $cart = session()->get('cart') ?? [];
@@ -22,6 +24,7 @@ class OrderController extends Controller
     echo view ('/layouts/footer');
   }
 
+  // Procesa la compra y guarda la orden
   public function process() {
 
     $cart = session()->get('cart') ?? [];
@@ -63,6 +66,7 @@ class OrderController extends Controller
     return redirect()->to('/orders')->with('succes', '¡Compra realizada con éxito!');
   }
 
+  // Lista las órdenes del usuario logueado
   public function list() {
     if (!session('isLoggedIn')) {
       return redirect()->to('/login')->with('error', 'Debes iniciar sesión para ver tus compras.');
@@ -79,6 +83,8 @@ class OrderController extends Controller
     echo view('/layouts/footer');
   }
 
+
+  // Muestra el detalle de una orden específica
   public function detail($orderId) {
     
     if(!session('isLoggedIn')) {

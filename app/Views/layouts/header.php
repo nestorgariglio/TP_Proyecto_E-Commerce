@@ -24,7 +24,20 @@
         </ul>
         <div class="d-flex gap-2 ms-lg-3">
           <a class="btn btn-light" href='<?= site_url('cart')?>'><i class="fa-solid fa-cart-shopping py-1"></i></a>
-          <a class="btn btn-light" href="<?= site_url('login')?>"><span style="font-size: 13px;">Iniciar Sesión</span></a>
+          <?php if(session('isLoggedIn')): ?>
+            <div class="dropdown d-flex align-items-center">
+              <button class="btn btn-light dropdown-toggle text-center d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="padding-top: 11px; padding-bottom: 11px; padding-left: 9px; padding-right: 9px;">
+                <i class="fa-solid fa-user" style="font-size: 13px;"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a href="<?= site_url('orders')?>" class="dropdown-item">Mis Compras</a></li>
+                <li><a href="<?= site_url('logout')?>" class="dropdown-item">Cerrar Sesión</a></li>
+              </ul>
+            </div>
+            <?php else: ?>
+            <a class="btn btn-light" href="<?= site_url('login')?>"><span
+            style="font-size: 13px;">Iniciar Sesión</span></a>
+          <?php endif; ?>
         </div>
       </div>
     </div>

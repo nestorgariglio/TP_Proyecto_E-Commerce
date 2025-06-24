@@ -7,6 +7,7 @@ use CodeIgniter\Controller;
 
 class CartController extends Controller
 {
+  // Muestra el carrito de compras
   public function index() {
     $cart = session()->get('cart') ?? [];
     echo view('/layouts/header');
@@ -14,6 +15,7 @@ class CartController extends Controller
     echo view('/layouts/footer');
   }
 
+  // Agrega un producto al carrito
   public function add($productId) {
     $quantity = $this->request->getPost('quantity') ?: 1;
     $productModel = new ProductModel();
@@ -49,6 +51,7 @@ class CartController extends Controller
     return redirect()->to('/cart')->with('success', 'Producto agregado al carrito.');
   }
 
+  // Actualiza la cantidad de un producto en el carrito
   public function update($productId)
   {
     $quantity = (int) $this->request->getPost('quantity');
@@ -65,6 +68,7 @@ class CartController extends Controller
     return redirect()->to('/cart');
   }
 
+  // Elimina un producto del carrito
   public function remove($productId) {
     $cart = session()->get('cart') ?? [];
     unset($cart[$productId]);
@@ -73,6 +77,7 @@ class CartController extends Controller
     return redirect()->to('/cart');
   }
 
+  // Vacía el carrito
   public function clear() {
       session()->remove('cart');
       return redirect()->to('/cart');

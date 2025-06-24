@@ -7,6 +7,8 @@ use CodeIgniter\Controller;
 
 class ProductController extends Controller
 {
+
+  // Muestra el catálogo de productos con filtros de búsqueda y categoría
   public function catalog() {
     $productModel = new ProductModel();
     $q = $this->request->getGet('q');
@@ -31,6 +33,7 @@ class ProductController extends Controller
     echo view('/layouts/footer');
   }
 
+  // Muestra el detalle de un producto individual
   public function detail($id) {
     $productModel = new ProductModel();
     $product = $productModel->where('is_active', 1)->find($id);

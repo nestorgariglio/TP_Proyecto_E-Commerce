@@ -8,7 +8,7 @@
 
 ## 📦 Descripción del Proyecto
 
-**Quelac** es una tienda online enfocada en productos alimenticios refrigerados (quesos, fiambres, bebidas y más). Este proyecto forma parte del trabajo práctico final de la materia *Taller de Programación I* y está desarrollado con PHP utilizando el framework **CodeIgniter 4** y **Bootstrap 5** para un diseño responsive.
+**Quelac** es una tienda online enfocada en productos alimenticios refrigerados (quesos, fiambres, bebidas y más). Este proyecto forma parte del trabajo práctico final de la materia _Taller de Programación I_ y está desarrollado con PHP utilizando el framework **CodeIgniter 4** y **Bootstrap 5** para un diseño responsive.
 
 Los usuarios pueden explorar productos, acceder a información institucional, consultar términos y condiciones, y contactar a la empresa mediante formularios.
 
@@ -29,6 +29,19 @@ Los usuarios pueden explorar productos, acceder a información institucional, co
 - **Formulario de contacto** funcional (segunda entrega).
 - **Secciones informativas**: Empresa, comercialización, términos y condiciones.
 - **Enlaces a redes sociales** e información de contacto.
+
+---
+
+## 🚀 Funcionalidades Implementadas
+
+- **Catálogo de productos:** Visualización, búsqueda y filtrado por categoría.
+- **Detalle de producto:** Página individual con información y botón para agregar al carrito.
+- **Carrito de compras:** Agregar, actualizar cantidades, eliminar productos y vaciar carrito.
+- **Checkout:** Confirmación de compra, guardado de órdenes y sus ítems en la base de datos.
+- **Órdenes:** Listado y detalle de compras del usuario logueado.
+- **Autenticación:** Registro, login y logout de usuarios.
+- **Panel de administración:** (En desarrollo) Gestión de productos para usuarios administradores.
+- **Vistas informativas:** Quiénes somos, contacto, términos y condiciones, marketing/envíos.
 
 ---
 
@@ -67,19 +80,22 @@ TP_Proyecto_E-Commerce/
 ## ⚙️ Instalación y Configuración
 
 1. **Clonar el repositorio**:
+
    ```bash
    git clone https://github.com/nestorgariglio/TP_Proyecto_E-Commerce.git
    ```
 
 2. **Configurar el entorno**:
+
    - Renombrar el archivo `env.example` a `env`
-   - Asegurarse de tener:  
+   - Asegurarse de tener:
      ```env
      CI_ENVIRONMENT = development
      ```
    - Configurar conexión a la base de datos en `.env` o `app/Config/Database.php`
 
 3. **Instalar dependencias (si usás Composer)**:
+
    ```bash
    composer install
    ```
@@ -101,8 +117,9 @@ TP_Proyecto_E-Commerce/
   - Comercialización
   - Contacto
   - Términos y usos
-- Completar formularios (segunda parte)
-- Ver productos destacados y descripción del negocio
+- Completar formularios (contacto, registro, login)
+- Ver productos, agregarlos al carrito y realizar compras
+- Consultar historial de compras
 
 ---
 
