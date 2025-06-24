@@ -77,57 +77,105 @@ TP_Proyecto_E-Commerce/
 
 ---
 
+## 📋 Requisitos Previos
+
+- PHP 8.1 o superior
+- XAMPP (Apache y MySQL)
+- Composer (opcional, solo si usás dependencias externas)
+
+---
+
+## 🗄️ Base de Datos
+
+1. **Crear la base de datos:**d
+
+   - Ingresá a phpMyAdmin o usá la terminal de MySQL.
+   - Creá una base de datos nueva, por ejemplo: `db_quelac`.
+
+2. **Importar la estructura y datos:**
+
+   - Usá el archivo `database/db_quelac.sql` incluido en el repositorio.
+   - En phpMyAdmin: seleccioná la base de datos creada, hacé clic en "Importar" y subí el archivo `.sql`.
+   - O desde terminal:
+     ```bash
+     mysql -u root -p quelac < database/quelac.sql
+     ```
+
+3. **Configurar la conexión:**
+   - Editá el archivo `.env` o `app/Config/Database.php` y asegurate de que los datos coincidan con tu entorno local:
+     ```env
+     database.default.hostname = localhost
+     database.default.database = db_quelac
+     database.default.username = root
+     database.default.password =
+     database.default.DBDriver = MySQLi
+     ```
+
+---
+
 ## ⚙️ Instalación y Configuración
 
-1. **Clonar el repositorio**:
+1. **Clonar el repositorio:**
 
    ```bash
    git clone https://github.com/nestorgariglio/TP_Proyecto_E-Commerce.git
    ```
 
-2. **Configurar el entorno**:
+2. **Configurar el entorno:**
 
-   - Renombrar el archivo `env.example` a `env`
-   - Asegurarse de tener:
+   - Renombrá `env.example` a `.env`
+   - Asegurate de tener:
      ```env
      CI_ENVIRONMENT = development
      ```
-   - Configurar conexión a la base de datos en `.env` o `app/Config/Database.php`
+   - Configurá la conexión a la base de datos como se explicó arriba.
 
-3. **Instalar dependencias (si usás Composer)**:
+3. **Instalar dependencias (opcional):**
 
    ```bash
    composer install
    ```
 
-4. **Iniciar el servidor local**:
-   - Colocar el proyecto en la carpeta `htdocs` de XAMPP
-   - Acceder desde el navegador:
+4. **Iniciar el servidor local:**
+   - Colocá el proyecto en la carpeta `htdocs` de XAMPP.
+   - Iniciá Apache y MySQL desde el panel de XAMPP.
+   - Accedé desde el navegador:
      ```
      http://localhost/TP_Proyecto_E-Commerce/public
      ```
 
 ---
 
+## 👤 Usuarios de Prueba
+
+- **Admin:**  
+  Email: admin@gmail.com  
+  Contraseña: admin
+
+- **Cliente:**  
+  Email: cliente@gmail.com  
+  Contraseña: cliente
+
+---
+
+## 📝 Notas
+
+- **No es necesario configurar Cloudinary** para probar el sitio: las imágenes de productos ya están subidas y referenciadas.
+- Si necesitás restablecer la base de datos, simplemente volvé a importar el archivo `.sql`.
+
+---
+
 ## 🚀 Uso del Sitio
 
-- Navegar desde la barra superior a secciones como:
-  - Principal
-  - Quiénes somos
-  - Comercialización
-  - Contacto
-  - Términos y usos
-- Completar formularios (contacto, registro, login)
-- Ver productos, agregarlos al carrito y realizar compras
-- Consultar historial de compras
+- Navegá por las secciones desde la barra superior.
+- Registrate o iniciá sesión para comprar.
+- Como admin, gestioná productos desde el panel de administración.
 
 ---
 
 ## 👤 Créditos
 
-- **Desarrollador:** Gariglio, Nestor David y Zayas Luciano Andres
-- **Framework:** CodeIgniter 4
-- **Diseño visual:** Bootstrap 5
+- **Desarrolladores:** Gariglio, Nestor David y Zayas Luciano Andres
 
 ---
 
