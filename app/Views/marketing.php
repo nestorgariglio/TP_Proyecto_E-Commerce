@@ -10,7 +10,24 @@
     </div>
     <div class="py-3 mb-3">
       <h3 class="fw-bold fs-4">Métodos de Envío</h3>
-      <span>Trabajamos con empresas de mensajería confiables para asegurar que tus productos lleguen en perfecto estado y a tiempo. Los envíos se realizan de lunes a viernes, y el tiempo de entrega estimado es de 2 a 5 días hábiles, dependiendo de tu ubicación. Una vez que tu pedido sea enviado, recibirás un número de seguimiento para que puedas rastrear el estado de tu entrega.</span>
+        <span>
+        Pedidos realizados antes de las 13 hs se entregan el mismo día, asegurando la cadena de frío con transporte propio o tercerizado con refrigeración.<br>Add commentMore actions
+        Horarios de entrega: de 14:00 a 19:00 hs<br>
+        Costo: $1800 o sin cargo a partir de $70000 en compras<br>
+        Ideal para productos frescos y urgencias<br><br>
+
+        <strong>Envío Programado – Elegí Día y Franja Horaria:</strong><br>
+        Permitimos al cliente seleccionar el día y horario que mejor le convenga (mañana o tarde).<br>
+        Disponible de lunes a sábado<br>
+        Permite mejor planificación logística<br>
+        Costo fijo bajo / gratuito a partir de monto mínimo<br><br>
+
+        <strong>Retiro en Sucursal – Gratis:</strong><br>
+        Podés hacer tu pedido online o por WhatsApp y retirarlo en cualquiera de nuestras 6 sucursales sin hacer fila.<br>
+        Tiempo estimado de preparación: 2 hs<br>
+        Aviso por WhatsApp o mail cuando está listo<br>
+        Sin mínimo de compra
+        </span>
     </div>
     <div class="py-3 mb-3">
       <h3 class="fw-bold fs-4">Formas de Pago</h3>

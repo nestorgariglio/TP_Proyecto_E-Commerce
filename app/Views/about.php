@@ -5,7 +5,7 @@
   <div class="container">
     <h3 class="fs-2 fw-bold text-start">Nuestra Historia</h3>
     <span>
-      En Sabores del Sur, nuestra pasión por los quesos y fiambres artesanales nos impulsa a ofrecer productos de la más alta calidad. Desde nuestros inicios, nos hemos dedicado a seleccionar cuidadosamente cada pieza, trabajando en estrecha colaboración con productores locales que comparten nuestro compromiso con la excelencia y la tradición. Nuestra misión es llevar a tu mesa los auténticos sabores de nuestra región, respetando los procesos artesanales y garantizando la frescura y el sabor inigualable de cada producto.
+      Quelac nació en 2016 en la ciudad de Corrientes como una oportunidad de crecimiento que dio origen a una sociedad anónima enfocada en ofrecer alimentos de calidad. Con el tiempo, nos consolidamos como referentes en quesos y fiambres, sumando también una amplia variedad de productos de despensa. Gracias al compromiso con la frescura, el buen precio y la atención cercana, hoy contamos con 6 locales en la ciudad y seguimos creciendo cada día.
     </span>
   </div>
   <div class="container mt-5">
@@ -33,7 +33,7 @@
     </div>
     <div class="w-100 my-3">
       <span>
-        Nuestro equipo está formado por profesionales apasionados por la gastronomía y comprometidos con la calidad. Sofía Rodríguez, nuestra fundadora y CEO, lidera con visión y experiencia. Martín García, nuestro maestro quesero, aporta su conocimiento ancestral en la elaboración de quesos artesanales. Lucía Pérez, nuestra especialista en fiambres, selecciona cuidadosamente cada pieza para garantizar su sabor y frescura. Juntos, trabajamos para ofrecerte una experiencia culinaria única y satisfactoria.
+        Nuestro equipo está conformado por profesionales apasionados por la tecnología y el desarrollo de soluciones innovadoras. Néstor Gariglio y Luciano Zayas, cofundadores y CEOs, lideran este proyecto con compromiso, creatividad y una sólida visión técnica. Como desarrolladores, combinan experiencia y dedicación para crear herramientas funcionales, eficientes y centradas en el usuario. Juntos, impulsan un equipo enfocado en brindar experiencias digitales de calidad, pensadas para marcar la diferencia..
       </span>
     </div>
   </div>
