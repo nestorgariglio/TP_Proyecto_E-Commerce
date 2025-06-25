@@ -130,13 +130,7 @@ TP_Proyecto_E-Commerce/
      ```
    - Configurá la conexión a la base de datos como se explicó arriba.
 
-3. **Instalar dependencias (opcional):**
-
-   ```bash
-   composer install
-   ```
-
-4. **Iniciar el servidor local:**
+3. **Iniciar el servidor local:**
    - Colocá el proyecto en la carpeta `htdocs` de XAMPP.
    - Iniciá Apache y MySQL desde el panel de XAMPP.
    - Accedé desde el navegador:
