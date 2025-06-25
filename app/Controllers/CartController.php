@@ -10,9 +10,8 @@ class CartController extends Controller
   // Muestra el carrito de compras
   public function index() {
     $cart = session()->get('cart') ?? [];
-    echo view('/layouts/header');
+
     echo view('cart', ['cart' => $cart]);
-    echo view('/layouts/footer');
   }
 
   // Agrega un producto al carrito

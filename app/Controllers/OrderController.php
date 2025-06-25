@@ -19,9 +19,7 @@ class OrderController extends Controller
       return redirect()->to('/cart')->with('error', 'El carrito está vacío.');
     }
 
-    echo view ('/layouts/header');
     echo view ('checkout', ['cart' => $cart]);
-    echo view ('/layouts/footer');
   }
 
   // Procesa la compra y guarda la orden
@@ -98,9 +96,7 @@ class OrderController extends Controller
       ->orderBy('created_at', 'DESC')
       ->findAll();
 
-    echo view('/layouts/header');
     echo view('orders', ['orders' => $orders]);
-    echo view('/layouts/footer');
   }
 
 
@@ -138,6 +134,5 @@ class OrderController extends Controller
       'order' => $order,
       'items' => $items,
     ]);
-    echo view('/layouts/footer');
   }
 }

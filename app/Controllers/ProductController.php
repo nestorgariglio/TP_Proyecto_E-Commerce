@@ -27,10 +27,7 @@ class ProductController extends Controller
 
     $products = $builder->findAll();
 
-
-    echo view('/layouts/header');
     echo view('catalog', ['products' => $products]);
-    echo view('/layouts/footer');
   }
 
   // Muestra el detalle de un producto individual
@@ -38,8 +35,6 @@ class ProductController extends Controller
     $productModel = new ProductModel();
     $product = $productModel->where('is_active', 1)->find($id);
 
-    echo view('/layouts/header');
     echo view('product', ['product' => $product]);
-    echo view('/layouts/footer');
   }
 }

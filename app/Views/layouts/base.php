@@ -37,6 +37,8 @@
   <!-- Render de las views -->
   <?= $this->renderSection('content') ?>
 
+  <?= view('layouts/footer')?>
+
   <script src="https://kit.fontawesome.com/945c8d5c2b.js" crossorigin="anonymous"></script>
   <script src="<?= base_url('assets/js/bootstrap/bootstrap.bundle.min.js') ?>"></script>
   <script>

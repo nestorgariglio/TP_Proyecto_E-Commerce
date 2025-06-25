@@ -22,18 +22,15 @@ class AdminProductController extends Controller
     $productModel = new ProductModel();
     $products = $productModel->findAll();
 
-    echo view('/layouts/header');
+
     echo view('admin_products', ['products' => $products]);
-    echo view('/layouts/footer');
   }
 
   // Formulario para agregar producto
   public function create() {
 
     $this->checkAdmin();
-    echo view('/layouts/header');
     echo view('admin_product_form');
-    echo view('/layouts/footer');
   }
 
   // Guarda el producto
@@ -105,9 +102,7 @@ class AdminProductController extends Controller
     $product = $productModel->find($id);
 
 
-    echo view('/layouts/header');
     echo view('admin_product_form', ['product' => $product]);
-    echo view('/layouts/footer');
   }
 
   // Actualizar el producto
