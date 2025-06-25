@@ -25,7 +25,7 @@
     <div class="row g-4">
       <?php if (!empty($products)): ?>
         <?php foreach ($products as $product): ?>
-          <div class="col-12 col-sm-6 col-lg-4">
+          <div class="col-12 col-sm-6 col-lg-3">
             <div class="card h-100 shadow-sm">
               <img src="<?= esc($product['image'])?>" alt="<?= esc($product['name']) ?>" class="card-img-top img-fluid">
               <div class="card-body d-flex flex-column">

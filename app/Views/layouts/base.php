@@ -13,7 +13,7 @@
   <!-- Toast  -->
   <div aria-live="polite" aria-atomic="true" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080; min-width: 300px;">
     <?php if (session('error')): ?>
-      <div class="toast align-items-center text-bg-danger border-0 show" role="alert" id="toastError" data-bs-delay="1000">
+      <div class="toast align-items-center text-bg-danger border-0 show" role="alert" id="toastError" data-bs-delay="4000">
         <div class="d-flex">
           <div class="toast-body">
             <?= esc(session('error')) ?>
@@ -43,7 +43,7 @@
     document.addEventListener('DOMContentLoaded', function () {
       var toastElList = [].slice.call(document.querySelectorAll('.toast'));
       toastElList.forEach(function (toastEl) {
-        var toast = new bootstrap.Toast(toastEl, { delay: 4000 });
+        var toast = new bootstrap.Toast(toastEl, { delay: 2000 });
         toast.show();
       });
     });
