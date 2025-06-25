@@ -102,7 +102,7 @@ TP_Proyecto_E-Commerce/
      ```
 
 3. **Configurar la conexión:**
-   - Editá el archivo `.env` o `app/Config/Database.php` y asegurate de que los datos coincidan con tu entorno local:
+   - Editá el archivo `.env` y asegurate de que los datos coincidan con tu entorno local:
      ```env
      database.default.hostname = localhost
      database.default.database = db_quelac
