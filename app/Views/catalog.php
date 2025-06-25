@@ -9,9 +9,9 @@
       <div class="col-12 col-md-4">
         <input type="text" name="q" class="form-control" placeholder="Buscar producto...">
       </div>
-      <div class="col-12 col-md-4">
-        <select name="category" class="form-select">
-          <option value="">Todas las categorías</option>
+      <div class="col-12 col-md-4 col-lg-2">
+        <select name="category" class="form-select w-75">
+          <option value="">Categoría</option>
           <option value="Queso">Quesos</option>
           <option value="Fiambre">Fiambres</option>
         </select>
