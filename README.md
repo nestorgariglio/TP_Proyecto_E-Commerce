@@ -8,7 +8,7 @@
 
 ## 📦 Descripción del Proyecto
 
-**Quelac** es una tienda online enfocada en productos alimenticios refrigerados (quesos, fiambres, bebidas y más). Este proyecto forma parte del trabajo práctico final de la materia _Taller de Programación I_ y está desarrollado con PHP utilizando el framework **CodeIgniter 4** y **Bootstrap 5** para un diseño responsive.
+**Quelac** es una tienda online enfocada en productos alimenticios refrigerados (quesos, fiambres, bebidas y más). Este proyecto es el trabajo práctico final de la materia _Taller de Programación I_ y está desarrollado con **PHP** (CodeIgniter 4) y **Bootstrap 5** para un diseño responsive.
 
 Los usuarios pueden explorar productos, acceder a información institucional, consultar términos y condiciones, y contactar a la empresa mediante formularios.
 
@@ -17,7 +17,7 @@ Los usuarios pueden explorar productos, acceder a información institucional, co
 ## 🚧 Entregas del Proyecto
 
 - ✅ **Primera Parte**: Maquetado completo del frontend (responsive, sin lógica de negocio).
-- ✅ **Segunda Parte**: Se agregarán funcionalidades dinámicas (catálogo de productos, búsquedas, formularios conectados, etc.).
+- ✅ **Segunda Parte**: Funcionalidades dinámicas (catálogo, búsquedas, formularios conectados, autenticación, panel admin, etc.).
 
 ---
 
@@ -26,8 +26,8 @@ Los usuarios pueden explorar productos, acceder a información institucional, co
 - **Página principal** con presentación, productos destacados y diseño visual atractivo.
 - **Barra de búsqueda** integrada.
 - **Diseño responsive** con Bootstrap 5.
-- **Formulario de contacto** funcional (segunda entrega).
-- **Secciones informativas**: Empresa, comercialización, términos y condiciones.
+- **Formulario de contacto** funcional.
+- **Secciones informativas**: Empresa, comercialización, términos y condiciones, marketing/envíos.
 - **Enlaces a redes sociales** e información de contacto.
 
 ---
@@ -40,17 +40,20 @@ Los usuarios pueden explorar productos, acceder a información institucional, co
 - **Checkout:** Confirmación de compra, guardado de órdenes y sus ítems en la base de datos.
 - **Órdenes:** Listado y detalle de compras del usuario logueado.
 - **Autenticación:** Registro, login y logout de usuarios.
-- **Panel de administración:** (En desarrollo) Gestión de productos para usuarios administradores.
-- **Vistas informativas:** Quiénes somos, contacto, términos y condiciones, marketing/envíos.
+- **Verificación de email:** Al registrarse, el usuario debe confirmar su cuenta mediante un enlace enviado a su correo electrónico. No podrá iniciar sesión hasta verificar su email.
+- **Panel de administración:**
+  - **Gestión de productos:** Alta, baja, edición, activación/desactivación automática por stock.
+  - **Gestión de ventas:** Visualización de todas las ventas realizadas, con detalle de cada orden y usuario comprador.
+  - **Gestión de usuarios:** Listado de usuarios, cambio de roles (cliente/admin), activación/desactivación de cuentas desde el panel.
 
 ---
 
 ## 💻 Tecnologías Utilizadas
 
-- **Backend**: PHP con CodeIgniter 4
-- **Frontend**: HTML5, CSS3, Bootstrap 5
-- **Iconografía**: Font Awesome
-- **Servidor local**: XAMPP
+- **Backend:** PHP con CodeIgniter 4
+- **Frontend:** HTML5, CSS3, Bootstrap 5
+- **Iconografía:** Font Awesome
+- **Servidor local:** XAMPP
 
 ---
 
@@ -70,6 +73,8 @@ TP_Proyecto_E-Commerce/
 │   │   ├── js/
 │   │   └── img/
 │   └── index.php
+├── database/
+│   └── db_quelac.sql
 ├── writable/
 ├── .env
 └── README.md
@@ -87,7 +92,7 @@ TP_Proyecto_E-Commerce/
 
 ## 🗄️ Base de Datos
 
-1. **Crear la base de datos:**d
+1. **Crear la base de datos:**
 
    - Ingresá a phpMyAdmin o usá la terminal de MySQL.
    - Creá una base de datos nueva, por ejemplo: `db_quelac`.
@@ -98,7 +103,7 @@ TP_Proyecto_E-Commerce/
    - En phpMyAdmin: seleccioná la base de datos creada, hacé clic en "Importar" y subí el archivo `.sql`.
    - O desde terminal:
      ```bash
-     mysql -u root -p quelac < database/quelac.sql
+     mysql -u root -p db_quelac < database/db_quelac.sql
      ```
 
 3. **Configurar la conexión:**
@@ -131,11 +136,28 @@ TP_Proyecto_E-Commerce/
    - Configurá la conexión a la base de datos como se explicó arriba.
 
 3. **Iniciar el servidor local:**
+
    - Colocá el proyecto en la carpeta `htdocs` de XAMPP.
    - Iniciá Apache y MySQL desde el panel de XAMPP.
    - Accedé desde el navegador:
      ```
      http://localhost/TP_Proyecto_E-Commerce/public
+     ```
+
+4. **Para el envío de emails (verificación de cuenta):**
+   - El sistema utiliza SMTP. Configurá los datos en el archivo `.env` con una cuenta válida de Gmail (o similar) y una contraseña de aplicación.
+   - Ejemplo de configuración:
+     ```env
+     email.protocol = smtp
+     email.SMTPHost = smtp.gmail.com
+     email.SMTPUser = tu_correo@gmail.com
+     email.SMTPPass = tu_contraseña_de_aplicación
+     email.SMTPPort = 587
+     email.SMTPCrypto = tls
+     email.mailType = html
+     email.charset = UTF-8
+     email.fromEmail = tu_correo@gmail.com
+     email.fromName = Quelac
      ```
 
 ---
@@ -150,12 +172,15 @@ TP_Proyecto_E-Commerce/
   Email: cliente@gmail.com  
   Contraseña: cliente
 
+_Aclaración:_ El rol de administrador puede ser asignado desde el panel de gestión de usuarios, sin necesidad de modificar la base de datos manualmente.
+
 ---
 
 ## 📝 Notas
 
 - **No es necesario configurar Cloudinary** para probar el sitio: las imágenes de productos ya están subidas y referenciadas.
 - Si necesitás restablecer la base de datos, simplemente volvé a importar el archivo `.sql`.
+- Para probar la verificación de email, usá un correo real y revisá la bandeja de entrada (y spam).
 
 ---
 
@@ -163,7 +188,7 @@ TP_Proyecto_E-Commerce/
 
 - Navegá por las secciones desde la barra superior.
 - Registrate o iniciá sesión para comprar.
-- Como admin, gestioná productos desde el panel de administración.
+- Como admin, gestioná productos, ventas y usuarios desde el panel de administración.
 
 ---
 
