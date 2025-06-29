@@ -24,8 +24,9 @@ $routes->get('/terms', 'ViewsController::terms');
 
 // Rutas para autenticación
 $routes->get('/register', 'AuthController::registerView');
-$routes->get('/login', 'AuthController::loginView');
 $routes->post('/register', 'AuthController::register');
+$routes->get('verify/(:any)', 'AuthController::verify/$1');
+$routes->get('/login', 'AuthController::loginView');
 $routes->post('/login', 'AuthController::login');
 $routes->get('/logout', 'AuthController::logout');
 
@@ -56,3 +57,8 @@ $routes->get('/admin/products/edit/(:num)', 'AdminProductController::edit/$1');
 $routes->post('/admin/products/update/(:num)', 'AdminProductController::update/$1');
 $routes->post('/admin/products/delete/(:num)', 'AdminProductController::delete/$1');
 $routes->post('/admin/products/active/(:num)', 'AdminProductController::active/$1');
+$routes->get('/admin/orders', 'AdminOrderController::index');
+$routes->get('/admin/orders/(:num)', 'AdminOrderController::detail/$1');
+$routes->get('/admin/users', 'AdminUserController::index');
+$routes->post('/admin/users/role/(:num)', 'AdminUserController::changeRole/$1');
+$routes->post('/admin/users/active/(:num)', 'AdminUserController::toggleActive/$1');

@@ -19,6 +19,8 @@ class AuthController extends Controller
       'email' => $this->request->getPost('email'),
       'password' => password_hash($this->request->getPost('password'), PASSWORD_BCRYPT),
       'role' => 'cliente',
+      'is_verified' => 0,
+      'verify_token' => bin2hex(random_bytes(32)),
     ];
 
     // Validación simple
@@ -27,8 +29,41 @@ class AuthController extends Controller
     }
 
     $userModel->insert($data);
-    return redirect()->to('/login')->with('success', 'Registro exitoso. Por favor, inicie sesión.');
+
+    $this->sendVerificationEmail($data['email'], $data['verify_token']);
+
+    return redirect()->to('/login')->with('success', 'Registro exitoso. Por favor, verifique su email.');
   }
+
+  private function sendVerificationEmail($email, $token) {
+    $emailService = \Config\Services::email();
+    $emailService->setTo($email);
+    $emailService->setFrom('quelac@outlook.com.ar', 'Quelac');
+    $emailService->setSubject('Verifica tu cuenta en Quelac');
+
+    $link = base_url('verify/' . $token);
+    $message = "¡Gracias por registrarte en Quelac!<br>Por favor, haz click en el siguiente enlace para verificar tu cuenta:<br><a href='$link'>link</a>";
+    
+    $emailService->setMessage($message);
+    $emailService->send();
+  }
+
+  public function verify($token) {
+    $userModel = new UserModel();
+    $user = $userModel->where('verify_token', $token)->first();
+
+    if (!$user) {
+      return redirect()->to('/login')->with('error', 'Token inválido.');
+    }
+
+    $userModel->update($user['id'], [
+      'is_verified' => 1,
+      'verify_token' => null
+    ]);
+
+    return redirect()->to('/login')->with('success', '!Cuenta verificada¡ Ya puedes iniciar sesión.');
+  }
+
 
   public function loginView() {
     return view('login');
@@ -42,6 +77,9 @@ class AuthController extends Controller
     $user = $userModel->where('email', $email)->first();
 
     if ($user && password_verify($password, $user['password'])) {
+      if (!$user['is_verified']) {
+        return redirect()->to('/login')->with('error', 'Debes verificar tu email antes de iniciar sesión');
+      }
       session()->set([
         'user_id' => $user['id'],
         'user_name' => $user['name'],
