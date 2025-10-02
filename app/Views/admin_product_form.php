@@ -32,8 +32,8 @@
       <label for="category" class="form-label">Categoría</label>
       <select class="form-select" id="category" name="category" required>
         <option value="">Seleccionar...</option>
-        <option value="Queso" <?= (isset($product) && $product['category'] == 'Queso') ? 'selected' : '' ?>>Queso</option>
-        <option value="Fiambre" <?= (isset($product) && $product['category'] == 'Fiambre') ? 'selected' : '' ?>>Fiambre</option>
+        <option value="Queso" <?= (isset($product) && esc($product['category']) == 'Queso') ? 'selected' : '' ?>>Queso</option>
+        <option value="Fiambre" <?= (isset($product) && esc($product['category']) == 'Fiambre') ? 'selected' : '' ?>>Fiambre</option>
       </select>
     </div>
 
@@ -45,8 +45,8 @@
     <div class="mb-3">
       <label for="is_active" class="form-label">Estado</label>
       <select class="form-select" id="is_active" name="is_active">
-        <option value="1" <?= (!isset($product) || $product['is_active']) ? 'selected' : '' ?>>Activo</option>
-        <option value="0" <?= (isset($product) && !$product['is_active']) ? 'selected' : '' ?>>Inactivo</option>
+        <option value="1" <?= (!isset($product) || esc($product['is_active'])) ? 'selected' : '' ?>>Activo</option>
+        <option value="0" <?= (isset($product) && esc(!$product['is_active'])) ? 'selected' : '' ?>>Inactivo</option>
       </select>
     </div>
 

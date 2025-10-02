@@ -8,7 +8,7 @@
   <div class="row mb-4">
     <div class="col-12 col-md-6">
       <div class="mb-2"><strong>Número de orden:</strong> #<?= esc($order['id']) ?></div>
-      <div class="mb-2"><strong>Fecha:</strong> <?= date('Y-m-d', strtotime($order['created_at'])) ?></div>
+      <div class="mb-2"><strong>Fecha:</strong> <?= date('Y-m-d', strtotime(esc($order['created_at']))) ?></div>
       <div class="mb-2"><strong>Estado:</strong>
         <?php if ($order['status'] === 'Pagado'): ?>
           <span class="badge bg-success">Pagado</span>
@@ -40,7 +40,7 @@
             <td><?= esc($item['name']) ?></td>
             <td class="text-center">$<?= esc($item['price']) ?></td>
             <td class="text-center"><?= esc($item['quantity']) ?></td>
-            <td class="text-center">$<?= $item['price'] * $item['quantity'] ?></td>
+            <td class="text-center">$<?= esc($item['price']) * esc($item['quantity']) ?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>

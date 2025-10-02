@@ -20,7 +20,7 @@
             <tr>
               <td><?= esc($order['id']) ?></td>
               <td><?= esc($order['user_name']) ?></td>
-              <td><?= date('Y-m-d', strtotime($order['created_at'])) ?></td>
+              <td><?= esc(date('Y-m-d', strtotime($order['created_at']))) ?></td>
               <td>$<?= esc($order['total']) ?></td>
               <td><?= esc($order['status']) ?></td>
               <td>

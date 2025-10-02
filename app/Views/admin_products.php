@@ -27,12 +27,12 @@
               <tr>
                 <td>1</td>
                 <td>
-                  <img src="<?= esc($product['image'])?>" alt="<?= $product['name']?>" style="width: 60px; height: 60px; object-fit: cover;" class="rounded shadow-sm">
+                  <img src="<?= esc($product['image'])?>" alt="<?= esc($product['name'])?>" style="width: 60px; height: 60px; object-fit: cover;" class="rounded shadow-sm">
                 </td>
-                <td><?= $product['name']?></td>
-                <td><?= $product['category']?></td>
-                <td>$<?= $product['price']?></td>
-                <td><?= $product['stock']?></td>
+                <td><?= esc($product['name'])?></td>
+                <td><?= esc($product['category'])?></td>
+                <td>$<?= esc($product['price'])?></td>
+                <td><?= esc($product['stock'])?></td>
                 <td>
                   <?php if($product['is_active']): ?>
                     <span class="badge bg-success">Activo</span>
@@ -43,11 +43,11 @@
                 <td>
                   <a href="<?= site_url('admin/products/edit/' . $product['id']) ?>" class="btn btn-sm btn-primary">Editar</a>
                   <?php if($product['is_active']): ?>
-                    <form action="<?= site_url('admin/products/delete/' . $product['id']) ?>" method="post" class="d-inline">
+                    <form action="<?= site_url('admin/products/delete/' . esc($product['id'])) ?>" method="post" class="d-inline">
                       <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Dar de baja este producto?')">Desactivar</button>
                     </form>
                   <?php else: ?>
-                    <form action="<?= site_url('admin/products/active/' . $product['id']) ?>" method="post" class="d-inline">
+                    <form action="<?= site_url('admin/products/active/' . esc($product['id'])) ?>" method="post" class="d-inline">
                       <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('¿Dar de baja este producto?')">Activar</button>
                     </form>
                   <?php endif; ?>

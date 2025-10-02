@@ -31,7 +31,7 @@
               <div class="card-body d-flex flex-column">
                 <h5 class="card-title"><?= esc($product['name'])?></h5>
                 <span class="fw-bold mb-2"><?= esc($product['price']) ?></span>
-                <a href="<?= site_url('product/' . $product['id'])?>" class="btn btn-primary mt-auto" style="background-color: #cf172e;">Ver Detalles</a>
+                <a href="<?= site_url('product/' . esc($product['id']))?>" class="btn btn-primary mt-auto" style="background-color: #cf172e;">Ver Detalles</a>
               </div>
             </div>
           </div>

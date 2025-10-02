@@ -21,7 +21,7 @@
         <?php foreach ($orders as $order): ?>
           <tr>
             <td><?= esc($order['id'])?></td>
-            <td><?= date('Y-m-d', strtotime($order['created_at'])) ?></td>
+            <td><?= date('Y-m-d', strtotime(esc($order['created_at']))) ?></td>
             <td><?= esc($order['total'])?></td>
             <td>
               <?php if ($order['status'] === 'Pagado'): ?>
@@ -31,7 +31,7 @@
               <?php endif; ?>
             </td>
             <td>
-              <a href="<?= site_url('orders/' . $order['id']) ?>" class="btn btn-sm btn-primary" style="background-color: #cf172e;">Ver Detalle</a>
+              <a href="<?= site_url('orders/' . esc($order['id'])) ?>" class="btn btn-sm btn-primary" style="background-color: #cf172e;">Ver Detalle</a>
             </td>
           </tr>
         <?php endforeach; ?>

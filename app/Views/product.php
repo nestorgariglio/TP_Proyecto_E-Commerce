@@ -19,7 +19,7 @@
         <span class="fw-bold fs-3" style="color: #cf172e;"><?= esc($product['price'])?></span>
       </div>
 
-      <form method="post" action="<?= site_url('cart/add/' . $product['id']) ?>" class="d-flex flex-column gap-3">
+      <form method="post" action="<?= site_url('cart/add/' . esc($product['id'])) ?>" class="d-flex flex-column gap-3">
         <div class="d-flex align-items-center gap-2">
           <label for="quantity" class="form-label mb-0">Cantidad:</label>
           <input type="number" id="quantity" name="quantity" value="1" min="1" class="form-control" style="width: 80px;">

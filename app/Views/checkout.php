@@ -16,7 +16,7 @@
       <tbody>
         <?php $total = 0; ?>
         <?php foreach($cart as $item): ?>
-          <?php $subtotal = $item['price'] * $item['quantity']; $total += $subtotal; ?>
+          <?php $subtotal = esc($item['price']) * esc($item['quantity']); $total += $subtotal; ?>
           <tr>
             <td><?= esc($item['name']) ?></td>
             <td>$<?= esc($item['price']) ?></td>

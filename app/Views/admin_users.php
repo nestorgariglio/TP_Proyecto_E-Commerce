@@ -34,14 +34,14 @@
               </td>
               <td>
                 <?php if ($user['id'] !== session('user_id')): ?>
-                  <form action="<?= site_url('admin/users/active/' . $user['id']) ?>" method="post" class="d-inline">
+                  <form action="<?= site_url('admin/users/active/' . esc($user['id'])) ?>" method="post" class="d-inline">
                     <button type="submit" class="btn btn-sm btn-warning">
                       <?= (!isset($user['is_active']) || $user['is_active']) ? 'Desactivar' : 'Activar' ?>
                     </button>
                   </form>
                 <?php endif; ?>
                 <?php if ($user['id'] !== session('user_id')): ?>
-                  <form action="<?= site_url('admin/users/role/' . $user['id']) ?>" method="post" class="d-inline">
+                  <form action="<?= site_url('admin/users/role/' . esc($user['id'])) ?>" method="post" class="d-inline">
                     <button type="submit" class="btn btn-sm btn-secondary">Cambiar Rol</button>
                   </form>
                 <?php endif; ?>

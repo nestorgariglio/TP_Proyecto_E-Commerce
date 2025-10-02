@@ -27,14 +27,14 @@
               </td>
               <td class="text-center">$<?= esc($item['price'])?></td>
               <td class="text-center">
-                <form method="post" action="<?= site_url('cart/update/' . $item['id']) ?>" class="d-inline">
+                <form method="post" action="<?= site_url('cart/update/' . esc($item['id'])) ?>" class="d-inline">
                   <input type="number" name="quantity" value="<?= esc($item['quantity'])?>" min="1" class="form-control text-center" style="width: 70px; display: inline-block;">
                   <button type="submit" class="btn btn-sm btn-outline-secondary ms-1">Actualizar</button>
                 </form>
               </td>
               <td class="text-center">$<?= $subtotal?></td>
               <td class="text-center">
-                <form method="post" action="<?= site_url('cart/remove/' . $item['id']) ?>" class="d-inline">
+                <form method="post" action="<?= site_url('cart/remove/' . esc($item['id'])) ?>" class="d-inline">
                   <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                 </form>
               </td>
