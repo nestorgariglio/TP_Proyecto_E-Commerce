@@ -51,7 +51,7 @@
     </div>
 
     <div class="d-flex justify-content-end gap-2">
-      <a href="<?= site_url('admin-products') ?>" class="btn btn-outline-secondary">Cancelar</a>
+      <a href="<?= site_url('/admin/products') ?>" class="btn btn-outline-secondary">Cancelar</a>
       <button type="submit" class="btn btn-primary" style="background-color: #cf172e;"><?= isset($product) ? 'Actualizar' : 'Agregar' ?></button>
     </div>
   </form>

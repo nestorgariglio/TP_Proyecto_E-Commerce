@@ -4,140 +4,115 @@ namespace App\Controllers;
 
 use App\Models\ProductModel;
 use CodeIgniter\Controller;
+use App\Libraries\CloudinaryService;
 
 class AdminProductController extends Controller
 {
-
-  // Protege todas las acciones para que solo el admin pueda tener acceso
-  private function checkAdmin() {
-    if(!session('isLoggedIn') || session('user_role') !== 'admin') {
-      return redirect()->to('/')->with('error', 'Acceso denegado.');
-    }
-  }
-
   // Listado de productos
   public function index() {
-
-    $this->checkAdmin();
     $productModel = new ProductModel();
     $products = $productModel->findAll();
-
-
     echo view('admin_products', ['products' => $products]);
   }
 
   // Formulario para agregar producto
   public function create() {
-
-    $this->checkAdmin();
     echo view('admin_product_form');
-  }
-
-  // Guarda el producto
-  public function save() {
-    $this->checkAdmin();
-    $productModel = new ProductModel();
-    $data = $this->request->getPost();
-
-    // Acá manejo la imagen
-    $imageUrl = $this->request->getPost('image');
-    $imageFile = $this->request->getFile('image_file');
-
-    if ($imageFile && $imageFile->isValid() && !$imageFile->hasMoved()) {
-
-      // Obtiene el nombre temporal del archivo que fue guardado por php
-      $cloudinaryUrl = $this->uploadToCloudinary($imageFile->getTempName());
-
-      if ($cloudinaryUrl) {
-        $data['image'] = $cloudinaryUrl;
-      } elseif (!in_array($imageFile->getMimeType(), ['image/jpeg', 'image/png', 'image/webp'])) {
-        return redirect()->back()->with('error', 'Solo se permiten imágenes JPG, PNG o WEBP.');
-      } elseif ($imageFile->getSize() > 2 * 1024 * 1024) {
-          return redirect()->back()->with('error', 'La imagen no debe superar los 2MB.');
-      } else {
-        return redirect()->back()->with('error', 'Error al subir la imagen a Cloudinary.');
-      }
-
-    } elseif ($imageUrl) {
-      $data['image'] = $imageUrl;
-    } else {
-      return redirect()->back()->with('error', 'Debe subir una imagen o ingresar una URL.');
-    }
-
-    $productModel->insert($data);
-    return redirect()->to('/admin-products')->with('success', 'Producto agregado.');
-  }
-
-  // Subir la imagen a cloudinary
-  private function uploadToCloudinary($filePath) {
-    $cloudName = 'dzv36wzmx';
-    $uploadPreset = 'quelac_unsigned';
-
-    $url = "https://api.cloudinary.com/v1_1/$cloudName/image/upload";
-    $postFields = [
-      'file' => new \CURLFile($filePath),
-      'upload_preset' => $uploadPreset,
-    ];
-
-    // Arma la solicitud http (usando la libreria curl)
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
-
-
-    $result = curl_exec($ch);
-    curl_close($ch);
-
-    // Acá transforma la respuesta de json a un array
-    $resultData = json_decode($result, true);
-    return $resultData['secure_url' ?? null];
   }
 
   // Formulario de edición
   public function edit($id) {
-    $this->checkAdmin();
     $productModel = new ProductModel();
     $product = $productModel->find($id);
 
+    if (!$product) return redirect()->to('/admin/products')->with('error', 'Producto no encontrado');
 
     echo view('admin_product_form', ['product' => $product]);
   }
 
-  // Actualizar el producto
-  public function update($id) {
+  // Guarda el producto
+  public function save($id = null) {
+    $rules = [
+      'name'        => 'required|min_length[3]',
+      'description' => 'required',
+      'price'       => 'required|numeric',
+      'stock'       => 'required|integer',
+      'category'    => 'required'
+    ];
 
-    $this->checkAdmin();
+    if ($this->request->getFile('image_file')->isValid()) {
+      $rules['image_file'] = 'is_image[image_file]|max_size[image_file,2048]';
+    }
+
+    if (!$this->validate($rules)) {
+      return redirect()->back()->withInput()->with('error', 'Por favor revise los datos ingresados.');
+    }
+
     $productModel = new ProductModel();
-    $data = $this->request->getPost();
-    $productModel->update($id, $data);
-    return redirect()->to('/admin-products')->with('success', 'Producto actualizado.');
+
+    $data = [
+      'name' => $this->request->getPost('name'),
+      'description' => $this->request->getPost('description'),
+      'price' => $this->request->getPost('price'),
+      'stock' => $this->request->getPost('stock'),
+      'category' => $this->request->getPost('category'),
+      'is_active' => $this->request->getPost('is_active'),
+    ];
+
+    $imageFile = $this->request->getFile('image_file');
+    $imageUrl = $this->request->getPost('image');
+
+
+    if ($imageFile && $imageFile->isValid() && !$imageFile->hasMoved()) {
+      $cloudinary = new CloudinaryService();
+      $cloudinaryUrl = $cloudinary->upload($imageFile->getTempName());
+      if ($cloudinaryUrl) {
+        $data['image'] = $cloudinaryUrl;
+      } else {
+        return redirect()->back()->withInput()->with('error', 'Error al subir imagen.');
+      }
+    } else if(!empty($imageUrl)){
+      $data['image'] = $imageUrl;
+    } else if($id === null){
+      return redirect()->back()->withInput()->with('error', 'Debe subir una imagen para un producto nuevo.');
+    }
+
+    if ($id) {
+      $productModel->update($id, $data);
+      $messagge = 'Producto actualizado correctamente.';
+    } else {
+      $productModel->insert($data);
+      $messagge = 'Producto creado correctamente.';
+    }
+
+    return redirect()->to('/admin/products')->with('success', $messagge);
+  }
+
+  public function update($id) {
+    return $this->save($id);
   }
 
   // Dar de baja (soft delete)
   public function delete($id) {
-    $this->checkAdmin();
     $productModel = new ProductModel();
     $productModel->update($id, ['is_active' => 0]);
-    return redirect()->to('/admin-products')->with('success', 'Producto dado de baja.');
+    return redirect()->to('/admin/products')->with('success', 'Producto dado de baja.');
   }
 
   // Dar de alta (volver a activar)
   public function active($id) {
-    $this->checkAdmin();
     $productModel = new ProductModel();
     $product = $productModel->find($id);
 
     if (!$product) {
-      return redirect()->to('/admin-products')->with('error', 'Producto no encontrado.');
+      return redirect()->to('/admin/products')->with('error', 'Producto no encontrado.');
     }
     if ($product['stock'] <= 0) {
-      return redirect()->to('/admin-products')->with('error', 'No se puede activar un producto sin stock.');
+      return redirect()->to('/admin/products')->with('error', 'No se puede activar un producto sin stock.');
     }
     
     $productModel->update($id, ['is_active' => 1]);
-    return redirect()->to('/admin-products')->with('success', 'Producto dado de alta.');
+    return redirect()->to('/admin/products')->with('success', 'Producto dado de alta.');
   }
 
 }

@@ -7,21 +7,13 @@ use CodeIgniter\Controller;
 
 class AdminUserController extends Controller
 {
-  private function checkAdmin() {
-    if (!session('isLoggedIn') || session('user_role') !== 'admin') {
-      return redirect()->to('/')->with('error', 'Acceso denegado.');
-    }
-  }
-
   public function index() {
-    $this->checkAdmin();
     $userModel = new UserModel();
     $users = $userModel->findAll();
     echo view('admin_users', ['users' => $users]);
   }
 
   public function changeRole($id) {
-    $this->checkAdmin();
     $userModel = new UserModel();
     $user = $userModel->find($id);
 
@@ -35,12 +27,15 @@ class AdminUserController extends Controller
   }
 
   public function toggleActive($id) {
-    $this->checkAdmin();
     $userModel = new UserModel();
     $user = $userModel->find($id);
 
     if (!$user) {
       return redirect()->back()->with('error', 'Usuario no encontrado.');
+    }
+
+    if ($user['id'] == session('user_id')) {
+      return redirect()->back()->with('error', 'No puedes desactivar tu propia cuenta.');
     }
 
     $newStatus = isset($user['is_active']) && $user['is_active'] ? 0 : 1;

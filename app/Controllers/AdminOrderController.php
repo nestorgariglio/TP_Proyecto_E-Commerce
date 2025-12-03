@@ -10,34 +10,25 @@ use CodeIgniter\Controller;
 
 class AdminOrderController extends Controller
 {
-
-  private function checkAdmin() {
-    if (!session('isLoggedIn') || session('user_role') !== 'admin') {
-      return redirect()->to('/')->with('error', 'Acceso denegado.');
-    }
-  }
-
   public function index() {
-    $this->checkAdmin();
     $orderModel = new OrderModel();
-    $userModel = new UserModel();
-    $orders = $orderModel->orderBy('created_at', 'DESC')->findAll();
-
-    foreach ($orders as &$order) {
-      $user = $userModel->find($order['user_id']);
-      $order['user_name'] = $user ? $user['name'] : 'Desconocido'; 
-    }
+    $orders = $orderModel->getOrdersWithUser();
 
     echo view('admin_orders', ['orders' => $orders]);
   }
 
+
   public function detail($orderId) {
-    $this->checkAdmin();
     $orderModel = new OrderModel();
     $orderItemModel = new OrderItemModel();
     $userModel = new UserModel();
 
     $order = $orderModel->find($orderId);
+
+    if (!$order) {
+      return redirect()->to('/admin/orders')->with('error', 'Orden no encontrada.');
+    }
+
     $items = $orderItemModel->where('order_id', $orderId)->findAll();
     $user = $userModel->find($order['user_id']);
 

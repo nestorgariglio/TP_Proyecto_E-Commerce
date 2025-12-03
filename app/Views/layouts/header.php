@@ -31,7 +31,7 @@
               </button>
               <ul class="dropdown-menu dropdown" aria-labelledby="userDropdown">
                 <?php if(session('user_role') === 'admin'): ?>
-                  <li><a href="<?= site_url('admin-products')?>" class="dropdown-item">Gestión Productos</a></li>
+                  <li><a href="<?= site_url('admin/products')?>" class="dropdown-item">Gestión Productos</a></li>
                   <li><a href="<?= site_url('admin/users')?>" class="dropdown-item">Gestión Usuarios</a></li>
                   <li><a href="<?= site_url('admin/orders')?>" class="dropdown-item">Ventas</a></li>
                 <?php else: ?>

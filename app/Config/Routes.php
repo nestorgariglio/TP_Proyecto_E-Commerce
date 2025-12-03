@@ -50,15 +50,17 @@ $routes->get('/orders', 'OrderController::list');
 $routes->get('/orders/(:num)', 'OrderController::detail/$1');
 
 //Rutas del Admin
-$routes->get('/admin-products', 'AdminProductController::index');
-$routes->get('/admin/products/create', 'AdminProductController::create');
-$routes->post('/admin/products/save', 'AdminProductController::save');
-$routes->get('/admin/products/edit/(:num)', 'AdminProductController::edit/$1');
-$routes->post('/admin/products/update/(:num)', 'AdminProductController::update/$1');
-$routes->post('/admin/products/delete/(:num)', 'AdminProductController::delete/$1');
-$routes->post('/admin/products/active/(:num)', 'AdminProductController::active/$1');
-$routes->get('/admin/orders', 'AdminOrderController::index');
-$routes->get('/admin/orders/(:num)', 'AdminOrderController::detail/$1');
-$routes->get('/admin/users', 'AdminUserController::index');
-$routes->post('/admin/users/role/(:num)', 'AdminUserController::changeRole/$1');
-$routes->post('/admin/users/active/(:num)', 'AdminUserController::toggleActive/$1');
+$routes->group('admin', ['filter' => 'adminAuth'], function($routes){
+  $routes->get('products', 'AdminProductController::index');
+  $routes->get('products/create', 'AdminProductController::create');
+  $routes->post('products/save', 'AdminProductController::save');
+  $routes->get('products/edit/(:num)', 'AdminProductController::edit/$1');
+  $routes->post('products/update/(:num)', 'AdminProductController::update/$1');
+  $routes->post('products/delete/(:num)', 'AdminProductController::delete/$1');
+  $routes->post('products/active/(:num)', 'AdminProductController::active/$1');
+  $routes->get('orders', 'AdminOrderController::index');
+  $routes->get('orders/(:num)', 'AdminOrderController::detail/$1');
+  $routes->get('users', 'AdminUserController::index');
+  $routes->post('users/role/(:num)', 'AdminUserController::changeRole/$1');
+  $routes->post('users/active/(:num)', 'AdminUserController::toggleActive/$1');
+});

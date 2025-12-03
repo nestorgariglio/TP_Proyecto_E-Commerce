@@ -11,4 +11,11 @@ class OrderModel extends Model
 
   protected  $useTimestamps = true;
   protected $returnType = 'array';
+
+  public function getOrdersWithUser() {
+    return $this->select('orders.*, users.name as user_name')
+                ->join('users', 'users.id = orders.user_id')
+                ->orderBy('orders.created_at', 'DESC')
+                ->findAll();
+  }
 }

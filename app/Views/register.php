@@ -6,29 +6,57 @@
     <div class="col-12 col-md-6 border rounded-3 shadow-sm align-items-center d-flex flex-column" style="padding: 3rem;">
       <h2 class="fw-bold fs-2">Regístrate</h2>
       <form action="<?= site_url('register')?>" method="post" class="d-flex flex-column align-items-center gap-3 p-1 w-100">
+
         <div class="w-100 d-flex flex-column align-items-center gap-3">
           <div class="mb-3 w-75 w-sm-100">
             <label for="name" class="form-label">Nombre Completo</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Ingrese su nombre completo" required>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="name" 
+              name="name" 
+              placeholder="Ingrese su nombre completo" 
+              required
+              value="<?= old('name')?>"
+            >
+            <?php if(session('errors.name')): ?>
+              <div class="text-danger small"><?= session('errors.name')?></div>
+            <?php endif; ?>
           </div>
+
           <div class="mb-3 w-75 w-sm-100">
             <label for="email" class="form-label">Correo Electrónico</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su correo electrónico" required>
+            <input 
+              type="email" 
+              class="form-control" 
+              id="email" 
+              name="email" 
+              placeholder="Ingrese su correo electrónico" 
+              required
+              value="<?= old('email') ?>"
+            >
+            <?php if(session('errors.email')): ?>
+              <div></div>
+            <?php endif; ?>
           </div>
+
           <div class="mb-3 w-75">
             <label for="password" class="form-label">Contraseña</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>
           </div>
+
           <div class="mb-3 w-75">
             <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
             <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirme su contraseña" required>
           </div>
+
           <div class="mb-2 form-check w-75">
             <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
             <label class="form-check
             -label" for="terms">Acepto los <a href="<?= site_url('terms') ?>">Términos y Condiciones</a></label>
           </div>
         </div>
+        
         <button type="submit" class="btn btn-primary btn-lg" style="background-color: #cf172e;">Registrarse</button>
       </form>
     </div>  

@@ -13,26 +13,30 @@ class AuthController extends Controller
   }
 
   public function register() {
+
+    if (!$this->validate([
+      'name'            => 'required|min_length[3]',
+      'email'           => 'required|valid_email|is_unique[users.email]',
+      'password'        => 'required|min_length[8]',
+      'confirmPassword' => 'required|matches[password]',
+      'terms'           => 'required'
+    ])) return redirect()->back()->withInput()->with('errors', $this->validator->getErrors()); 
+
     $userModel = new UserModel();
-    $data = [
-      'name' => $this->request->getPost('name'),
-      'email' => $this->request->getPost('email'),
-      'password' => password_hash($this->request->getPost('password'), PASSWORD_BCRYPT),
-      'role' => 'cliente',
-      'is_verified' => 0,
-      'verify_token' => bin2hex(random_bytes(32)),
+    $userData = [
+      'name'      => $this->request->getPost('name'),
+      'email'     => $this->request->getPost('email'),
+      'password'  => $this->request->getPost('password'),
     ];
 
-    // Validación simple
-    if ($userModel->where('email', $data['email'])->first()) {
-      return redirect()->back()->with('error', 'El email ya está registrado.');
+    $registeredData = $userModel->registerUser($userData);
+
+    if ($registeredData) {
+      $this->sendVerificationEmail($registeredData['email'], $registeredData['verify_token']);
+      return redirect()->to('/login')->with('success', 'Registro exitoso. Por favor, verifique su email.');
+    } else {
+      return redirect()->back()->with('error', 'Hubo un problema al registrar la cuenta.');
     }
-
-    $userModel->insert($data);
-
-    $this->sendVerificationEmail($data['email'], $data['verify_token']);
-
-    return redirect()->to('/login')->with('success', 'Registro exitoso. Por favor, verifique su email.');
   }
 
   private function sendVerificationEmail($email, $token) {
