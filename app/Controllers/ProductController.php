@@ -27,7 +27,11 @@ class ProductController extends Controller
 
     $products = $builder->findAll();
 
-    echo view('catalog', ['products' => $products]);
+    echo view('catalog', [
+      'products' => $products,
+      'currentCategory' => $category,
+      'currentSearch' => $q
+    ]);
   }
 
   // Muestra el detalle de un producto individual

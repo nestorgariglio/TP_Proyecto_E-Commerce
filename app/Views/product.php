@@ -16,7 +16,7 @@
       <p class="fs-5 mb-4"><?= esc($product['description'])?></p>
 
       <div class="mb-4">
-        <span class="fw-bold fs-3" style="color: #cf172e;"><?= esc($product['price'])?></span>
+        <span class="fw-bold fs-3" style="color: #cf172e;">$<?= esc($product['price'])?></span>
       </div>
 
       <form method="post" action="<?= site_url('cart/add/' . esc($product['id'])) ?>" class="d-flex flex-column gap-3">

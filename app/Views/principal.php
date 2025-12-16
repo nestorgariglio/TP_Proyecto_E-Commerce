@@ -2,39 +2,33 @@
 <?= $this->section('content')?>
 <section class="d-flex flex-column justify-content-center align-items-center w-100" style="padding-top: 6rem; padding-left: 2rem; padding-right: 2rem;">
   <div class="card text-bg-dark border-0 shadow w-100 container-lg p-0">
-    <img src="https://res.cloudinary.com/dzv36wzmx/image/upload/v1748896651/fiambre-hero_rhqrid.svg" class="card-img img-fluid w-100" alt="...">
+    <img src="https://res.cloudinary.com/dx7e5izqu/image/upload/v1765396094/hero_image_o6qw1i.jpg" class="card-img img-fluid w-100" alt="...">
+
     <div class="card-img-overlay d-flex flex-column align-items-center justify-content-center px-2 px-md-5 mt-3 gap-2 gap-md-3">
-      <h1 class="card-title text-center fw-bolder text-break">Descubre la Excelencia en Quesos y Fiambres</h1>
-      <span class="card-text text-center text-break">En Quelac, seleccionamos cuidadosamente los mejores quesos y fiambres para deleitar tu paladar. Explora nuestra variedad y disfruta de sabores auténticos.</span>
+      <h1 class="card-title text-center fw-bolder text-break" style="filter: drop-shadow(5px 5px 5px black);">Descubre la Excelencia en Quesos y Fiambres</h1>
+      <span class="card-text text-center text-break" style="filter: drop-shadow(2px 2px 2px black);">En Quelac, seleccionamos cuidadosamente los mejores quesos y fiambres para deleitar tu paladar. Explora nuestra variedad y disfruta de sabores auténticos.</span>
       <a href="<?= site_url('catalog')?>" class="btn btn-lg mt-2 mt-md-3 px-3" style="background-color: #cf172e;">
         <span class="fw-medium fs-6 text-white">Explorar Productos</span>
       </a>
     </div>
   </div>
+
   <div class="py-5 container">
-    <h3 class="w-100 text-start fs-4 fw-bold">Nuestros Productos Destacados</h3>
-    <div class="row w-100 g-3">
+    <h3 class="w-100 text-start fs-4 fw-bold">Explora por Categoría</h3>
+    <div class="row w-100 g-3"> <?php foreach($categories as $cat): ?>
       <div class="col-12 col-md-4">
-        <div class="py-4 h-100 d-flex flex-column align-items-center">
-          <img src="https://res.cloudinary.com/dzv36wzmx/image/upload/v1749076696/suggested1_caxxbf.svg" alt="" class="img-fluid">
-          <p class="m-0 pt-2 fw-semibold">Quesos Artesanales</p>
-          <span class="text-gray">Una selección de quesos madurados y frescos, con sabores únicos y texturas irresistibles.</span>
-        </div>
+        <a href="<?= site_url('catalog?category=' . esc($cat['filter']))?>" class="text-decoration-none text-dark h-100 d-block">
+          <div class="card h-100 border-0 shadow-sm hover-effect d-flex flex-column align-items-center p-4 text-center " style="transition: transform 0.2s;">
+            <img src="<?= esc($cat['image']) ?>" alt="<?= esc($cat['title']) ?>" class="img-fluid mb-3" style="max-height: 150px; object-fit: contain;">
+            <h4 class="m-0 fw-semibold fs-5"><?= esc($cat['title']) ?></h4>
+            <p class="text-muted small mt-2">
+              <?= esc($cat['description']) ?>
+            </p>
+            <span class="btn btn-sm btn-outline-danger mt-auto rounded-pill px-4">Ver Productos</span>
+          </div>
+        </a>
       </div>
-      <div class="col-12 col-md-4">
-        <div class="py-4 h-100 d-flex flex-column align-items-center">
-          <img src="https://res.cloudinary.com/dzv36wzmx/image/upload/v1749076696/suggested2_i6ided.svg" alt="" class="img-fluid">
-          <p class="m-0 pt-2 fw-semibold">Fiambres Selectos</p>
-          <span>Fiambres curados con técnicas tradicionales, que resaltan los sabores y aromas de cada pieza.</span>
-        </div>
-      </div>
-      <div class="col-12 col-md-4">
-        <div class="py-4 h-100 d-flex flex-column align-items-center">
-          <img src="https://res.cloudinary.com/dzv36wzmx/image/upload/v1749076696/suggested3_nnn74w.svg" alt="" class="img-fluid">
-          <p class="m-0 pt-2 fw-semibold">Tablas de Degustación</p>
-          <span>Combina quesos y fiambres en nuestras tablas de degustación, perfectas para compartir y disfrutar.</span>
-        </div>
-      </div>
+    <?php endforeach; ?>
     </div>
   </div>
   <div class="py-3 container">

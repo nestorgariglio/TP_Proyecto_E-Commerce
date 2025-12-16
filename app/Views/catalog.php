@@ -7,13 +7,20 @@
     <!-- Filtros -->
     <form method="get" class="row g-2 mb-4">
       <div class="col-12 col-md-4">
-        <input type="text" name="q" class="form-control" placeholder="Buscar producto...">
+        <input 
+          type="text" 
+          name="q" 
+          class="form-control" 
+          placeholder="Buscar producto..." 
+          value="<?= isset($currentSearch) ? esc($currentSearch) : '' ?>"
+        >
       </div>
       <div class="col-12 col-md-4 col-lg-2">
         <select name="category" class="form-select w-75">
-          <option value="">Categoría</option>
-          <option value="Queso">Quesos</option>
-          <option value="Fiambre">Fiambres</option>
+          <option value="" <?= empty($currentCategory) ? 'selected' : '' ?>>Todos</option>
+          <option value="Queso" <?= (isset($currentCategory) && $currentCategory == 'Queso') ? 'selected' : '' ?>>Quesos</option>
+          <option value="Fiambre" <?= (isset($currentCategory) && $currentCategory == 'Fiambre') ? 'selected' : '' ?>>Fiambres</option>
+          <option value="Panificado" <?= (isset($currentCategory) && $currentCategory == 'Panificado') ? 'selected' : '' ?>>Panificados</option>
         </select>
       </div>
       <div class="col-12 col-md-4">
@@ -30,7 +37,7 @@
               <img src="<?= esc($product['image'])?>" alt="<?= esc($product['name']) ?>" class="card-img-top img-fluid">
               <div class="card-body d-flex flex-column">
                 <h5 class="card-title"><?= esc($product['name'])?></h5>
-                <span class="fw-bold mb-2"><?= esc($product['price']) ?></span>
+                <span class="fw-bold mb-2">$<?= esc($product['price']) ?></span>
                 <a href="<?= site_url('product/' . esc($product['id']))?>" class="btn btn-primary mt-auto" style="background-color: #cf172e;">Ver Detalles</a>
               </div>
             </div>

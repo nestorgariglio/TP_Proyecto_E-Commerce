@@ -8,19 +8,11 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'ViewsController::principal');
 $routes->get('/about', 'ViewsController::about');
 $routes->get('/marketing', 'ViewsController::marketing');
-$routes->get('/contact', 'ViewsController::contact');
 $routes->get('/terms', 'ViewsController::terms');
 
-
-
-
-
-// $routes->get('/order_detail', 'ViewsController::order_detail');
-// $routes->get('/admin-products', 'ViewsController::adminProducts');
-// $routes->get('/admin-products/add', 'ViewsController::adminProductForm');
-// $routes->get('/admin-products/edit/(:num)', 'ViewsController::adminProductForm/$1');
-
-
+// Rutas de contacto
+$routes->get('/contact', 'ViewsController::contact');
+$routes->post('/contact/send', 'ContactController::sendContact');
 
 // Rutas para autenticación
 $routes->get('/register', 'AuthController::registerView');
@@ -60,6 +52,7 @@ $routes->group('admin', ['filter' => 'adminAuth'], function($routes){
   $routes->post('products/active/(:num)', 'AdminProductController::active/$1');
   $routes->get('orders', 'AdminOrderController::index');
   $routes->get('orders/(:num)', 'AdminOrderController::detail/$1');
+  $routes->post('orders/confirm-payment/(:num)', 'AdminOrderController::confirmPayment/$1');
   $routes->get('users', 'AdminUserController::index');
   $routes->post('users/role/(:num)', 'AdminUserController::changeRole/$1');
   $routes->post('users/active/(:num)', 'AdminUserController::toggleActive/$1');

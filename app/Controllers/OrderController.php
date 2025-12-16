@@ -71,24 +71,46 @@ class OrderController extends Controller
       return redirect()->to('/login')->with('error', 'Debes iniciar sesión para comprar');
     }
 
-    $db = \Config\Database::connect();
-    $productModel = new ProductModel();
-    $orderModel = new OrderModel();
-    $orderItemModel = new OrderItemModel();
+    $shippingMethod = $this->request->getPost('shipping_method');
+    $paymentMethod = $this->request->getPost('payment_method');
+    $address = $this->request->getPost('address');
 
+    $subtotalProductos = 0;
+    $shippingCost = 0;
+
+    foreach($cart as $item) {
+      $subtotalProductos += $item['price'] * $item['quantity'];
+    }
+
+    if ($shippingMethod === 'delivery') {
+      $shippingCost = $subtotalProductos >= 70000 ? 0 : 2000;
+      if (empty($address)) {
+        return redirect()->back()->with('error', 'La dirección es obligatoria para envíos.');
+      }
+    } else {
+      $address = 'Retiro en Local';
+    }
+
+    $orderStatus = ($paymentMethod === 'card') ? 'Pagado' : 'Pendiente';
+
+    $db = \Config\Database::connect();
     $db->transStart();
 
     try {
-      $total = 0;
+      $productModel = new ProductModel();
+      $orderModel = new OrderModel();
+      $orderItemModel = new OrderItemModel();
 
-      foreach($cart as $item) {
-        $total += $item['price'] * $item['quantity'];
-      }
+      $totalFinal = $subtotalProductos + $shippingCost;
 
       $orderId = $orderModel->insert([
         'user_id' => session('user_id'),
-        'total' => $total,
-        'status' => 'Pagado'
+        'total' => $totalFinal,
+        'status' => $orderStatus,
+        'payment_method' => $paymentMethod,
+        'shipping_method' => $shippingMethod,
+        'shipping_cost' => $shippingCost,
+        'shipping_address' => $address
       ], true);
 
       foreach($cart as $item) {
@@ -127,7 +149,13 @@ class OrderController extends Controller
       }
 
       session()->remove('cart');
-      return redirect()->to('/orders')->with('success', '¡Compra realizada con éxito!');
+
+      $msg = ($paymentMethod === 'card')
+           ? '¡Pago acreditado! Tu pedido está en preparación.'
+           : 'Pedido Registrado. Abona al recibir/retirar para completar la compra.';
+
+      return redirect()->to('/orders')->with('success', $msg);
+      
     } catch (\Exception $e) {
       return redirect()->to('/cart')->with('error', 'Error en la compra: ' . $e->getMessage());
     }

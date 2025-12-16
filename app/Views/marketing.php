@@ -1,42 +1,112 @@
 <?= $this->extend('layouts/base')?>
 <?= $this->section('content')?>
 
-<section class="d-flex flex-column align-items-center w-100" style="padding-top: 6rem;">
+<section class="w-100" style="padding-top: 8rem; padding-bottom: 5rem; background-color: #f8f9fa;">
   <div class="container">
-    <h2 class="fw-bold fs-2">Envíos y Pagos</h2>
-    <div class="py-3 mb-3">
-      <h3 class="fw-bold fs-4">Opciones de Entrega</h3>
-      <span>Ofrecemos diversas opciones de entrega para adaptarnos a tus necesidades. Puedes elegir entre entrega a domicilio o recoger tu pedido en nuestro punto de venta. Los envíos a domicilio tienen un costo adicional que se calcula según la distancia y el peso del pedido. Para pedidos superiores a un monto específico, el envío es gratuito. La recogida en tienda es sin costo adicional y te permite recoger tu pedido en el horario que más te convenga.</span>
+    
+    <div class="text-center mb-5">
+      <h2 class="fw-bold display-5 mb-3">Envíos y Formas de Pago</h2>
+      <p class="text-muted fs-5 mw-75 mx-auto">
+        Flexibilidad y seguridad para que recibas tus productos como prefieras.
+      </p>
     </div>
-    <div class="py-3 mb-3">
-      <h3 class="fw-bold fs-4">Métodos de Envío</h3>
-        <span>
-        Pedidos realizados antes de las 13 hs se entregan el mismo día, asegurando la cadena de frío con transporte propio o tercerizado con refrigeración.<br>Add commentMore actions
-        Horarios de entrega: de 14:00 a 19:00 hs<br>
-        Costo: $1800 o sin cargo a partir de $70000 en compras<br>
-        Ideal para productos frescos y urgencias<br><br>
 
-        <strong>Envío Programado – Elegí Día y Franja Horaria:</strong><br>
-        Permitimos al cliente seleccionar el día y horario que mejor le convenga (mañana o tarde).<br>
-        Disponible de lunes a sábado<br>
-        Permite mejor planificación logística<br>
-        Costo fijo bajo / gratuito a partir de monto mínimo<br><br>
+    <div class="row mb-5 g-4">
+      <div class="col-12 text-center mb-2">
+        <h3 class="fw-bold fs-3">¿Cómo quieres recibir tu pedido?</h3>
+      </div>
 
-        <strong>Retiro en Sucursal – Gratis:</strong><br>
-        Podés hacer tu pedido online o por WhatsApp y retirarlo en cualquiera de nuestras 6 sucursales sin hacer fila.<br>
-        Tiempo estimado de preparación: 2 hs<br>
-        Aviso por WhatsApp o mail cuando está listo<br>
-        Sin mínimo de compra
-        </span>
+      <div class="col-12 col-md-4">
+        <div class="card h-100 border-0 shadow-sm hover-up text-center p-4">
+          <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; background-color: #e3f2fd; color: #0d6efd;">
+            <i class="bi bi-lightning-charge-fill fs-2"></i>
+          </div>
+          <h4 class="fw-bold">Envío Express</h4>
+          <p class="text-muted small">Ideal para urgencias y productos frescos.</p>
+          <hr class="my-3 opacity-10">
+          <ul class="list-unstyled text-start small mb-0">
+            <li class="mb-2"><i class="bi bi-check2 text-success me-2"></i>Pedidos antes de las 13hs llegan <strong>hoy</strong>.</li>
+            <li class="mb-2"><i class="bi bi-clock text-primary me-2"></i>Entrega: 14:00 - 19:00 hs.</li>
+            <li><i class="bi bi-tag-fill text-danger me-2"></i>Costo: $1800 (Gratis > $70.000).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <div class="card h-100 border-0 shadow-sm hover-up text-center p-4">
+          <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; background-color: #fff3cd; color: #ffc107;">
+            <i class="bi bi-calendar-check-fill fs-2"></i>
+          </div>
+          <h4 class="fw-bold">Envío Programado</h4>
+          <p class="text-muted small">Organiza tu semana eligiendo día y hora.</p>
+          <hr class="my-3 opacity-10">
+          <ul class="list-unstyled text-start small mb-0">
+            <li class="mb-2"><i class="bi bi-check2 text-success me-2"></i>Elige franja mañana o tarde.</li>
+            <li class="mb-2"><i class="bi bi-calendar-week text-primary me-2"></i>Lunes a Sábado.</li>
+            <li><i class="bi bi-piggy-bank-fill text-danger me-2"></i>Costo reducido o gratuito.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <div class="card h-100 border-0 shadow-sm hover-up text-center p-4">
+          <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px; background-color: #d1e7dd; color: #198754;">
+            <i class="bi bi-shop fs-2"></i>
+          </div>
+          <h4 class="fw-bold">Retiro en Sucursal</h4>
+          <p class="text-muted small">Pasa a buscarlo sin hacer filas.</p>
+          <hr class="my-3 opacity-10">
+          <ul class="list-unstyled text-start small mb-0">
+            <li class="mb-2"><i class="bi bi-check2 text-success me-2"></i>Listo en 2 horas aprox.</li>
+            <li class="mb-2"><i class="bi bi-whatsapp text-primary me-2"></i>Te avisamos cuando esté listo.</li>
+            <li><i class="bi bi-emoji-smile-fill text-danger me-2"></i><strong>¡Totalmente Gratis!</strong></li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="py-3 mb-3">
-      <h3 class="fw-bold fs-4">Formas de Pago</h3>
-      <span>Aceptamos diversas formas de pago para tu comodidad. Puedes pagar con tarjeta de crédito o débito (Visa, Mastercard, American Express), PayPal, transferencia bancaria o en efectivo al momento de la entrega (solo para recogida en tienda). Todos los pagos se procesan de forma segura para proteger tu información personal y financiera.</span>
+
+<div class="card border-0 shadow-lg overflow-hidden rounded-4 mb-5">
+      <div class="row g-0">
+        <div class="col-12 col-lg-4 text-white p-5 d-flex flex-column justify-content-center" style="background-color: #cf172e;">
+          <h3 class="fw-bold mb-3"><i class="bi bi-credit-card-2-front me-2"></i> Medios de Pago</h3>
+          <p class="opacity-75">Tu seguridad es nuestra prioridad. Aceptamos los medios de pago más confiables para tu tranquilidad.</p>
+        </div>
+        
+        <div class="col-12 col-lg-8 bg-white p-5 d-flex align-items-center justify-content-center">
+            <div class="row w-100 text-center g-4 justify-content-center">
+                
+                <div class="col-6 col-md-4">
+                    <div class="p-3 border rounded-3 bg-light">
+                        <i class="bi bi-credit-card fs-1 text-secondary d-block mb-2"></i>
+                        <span class="fw-bold text-dark">Crédito/Débito</span>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4">
+                    <div class="p-3 border rounded-3 bg-light">
+                        <i class="bi bi-cash-coin fs-1 text-secondary d-block mb-2"></i>
+                        <span class="fw-bold text-dark">Efectivo (Local)</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+      </div>
     </div>
-    <div class="py-3 mb-3">
-      <h3 class="fw-bold fs-4">Información Adicional</h3>
-      <span>Para cualquier duda o consulta sobre envíos y pagos, no dudes en contactarnos a través de nuestro formulario de contacto o por teléfono. Nuestro equipo de atención al cliente estará encantado de ayudarte. También puedes consultar nuestra sección de preguntas frecuentes para encontrar respuestas a las preguntas más comunes.</span>
+
+    <div class="text-center">
+      <h4 class="fw-bold fs-5 mb-3">¿Tienes alguna duda sobre tu zona de entrega?</h4>
+      <a href="<?= site_url('contact') ?>" class="btn btn-outline-dark px-4 rounded-pill">
+        Consultar Cobertura
+      </a>
     </div>
+
   </div>
 </section>
+
+<style>
+  .hover-up { transition: transform 0.2s ease; }
+  .hover-up:hover { transform: translateY(-5px); cursor: default; }
+</style>
+
 <?= $this->endSection()?>

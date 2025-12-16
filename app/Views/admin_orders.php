@@ -25,6 +25,17 @@
               <td><?= esc($order['status']) ?></td>
               <td>
                 <a href="<?= site_url('admin/orders/' . $order['id']) ?>" class="btn btn-sm btn-primary">Ver Detalle</a>
+                <?php if($order['status'] === 'Pendiente'): ?>
+                  <form 
+                    action="<?= site_url('admin/orders/confirm-payment/' . $order['id']) ?>"
+                    method="post"
+                    class="d-inline"
+                  >
+                    <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('¿Confirmar que se recibió el pago de esta order?')">
+                      Confirmar Pago
+                    </button>
+                  </form>
+                <?php endif; ?>
               </td>
             </tr>
           <?php endforeach; ?>

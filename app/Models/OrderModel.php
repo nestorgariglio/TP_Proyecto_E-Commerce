@@ -7,7 +7,17 @@ class OrderModel extends Model
 {
   protected $table = 'orders';
   protected $primaryKey = 'id';
-  protected $allowedFields = ['user_id', 'total', 'status', 'created_at', 'updated_at'];
+  protected $allowedFields = [
+    'user_id', 
+    'total', 
+    'status',
+    'payment_method',
+    'shipping_method',
+    'shipping_address',
+    'shipping_cost', 
+    'created_at', 
+    'updated_at'  
+  ];
 
   protected  $useTimestamps = true;
   protected $returnType = 'array';

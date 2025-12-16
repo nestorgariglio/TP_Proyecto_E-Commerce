@@ -34,6 +34,7 @@
         <option value="">Seleccionar...</option>
         <option value="Queso" <?= (isset($product) && esc($product['category']) == 'Queso') ? 'selected' : '' ?>>Queso</option>
         <option value="Fiambre" <?= (isset($product) && esc($product['category']) == 'Fiambre') ? 'selected' : '' ?>>Fiambre</option>
+        <option value="Panificado" <?= (isset($product) && esc($product['category']) == 'Panificado') ? 'selected' : '' ?>>Panificado</option>
       </select>
     </div>
 

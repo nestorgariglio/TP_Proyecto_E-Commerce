@@ -39,4 +39,21 @@ class AdminOrderController extends Controller
     ]);
   }
 
+  public function confirmPayment($orderId){ 
+    $orderModel = new OrderModel();
+    $order = $orderModel->find($orderId);
+
+    if (!$order) {
+      return redirect()->back()->with('error', 'Orden no encontrada');
+    }
+
+    if ($order['status'] !== 'Pendiente') {
+      return redirect()->back()->with('error', 'Esta orden ya está pagada o cancelada.');
+    }
+
+    $orderModel->update($orderId, ['status' => 'Pagado']);
+
+    return redirect()->back()->with('success', 'Pagon confirmado. La orden ahora está completa.');
+  }
+
 }
