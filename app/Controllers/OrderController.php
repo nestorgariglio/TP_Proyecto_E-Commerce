@@ -71,6 +71,28 @@ class OrderController extends Controller
       return redirect()->to('/login')->with('error', 'Debes iniciar sesión para comprar');
     }
 
+    $rules = [
+      'dni'             => 'required|numeric|min_length[7]|max_length[8]',
+      'shipping_method' => 'required',
+      'payment_method'  => 'required'
+    ];
+
+    $message = [
+      'dni' => [
+        'required'    => 'El DNI es obligatorio.',
+        'numeric'     => 'El DNI debe contener solo números.',
+        'min_length'  => 'El DNI es demasiado corto.',
+        'max_length'  => 'El DNI es demasiado largo.'
+      ],
+      'shipping_method' => ['required' => 'Debes seleccionar una forma de entrega.'],
+      'payment_method'  => ['required' => 'Debes seleccionar un método de pago.']
+    ];
+
+    if (!$this->validate($rules, $message)) {
+      return redirect()->back()->withInput()->with('error', $this->validator->getErrors());
+    }
+
+    $dni = $this->request->getPost(('dni'));
     $shippingMethod = $this->request->getPost('shipping_method');
     $paymentMethod = $this->request->getPost('payment_method');
     $address = $this->request->getPost('address');
@@ -105,6 +127,7 @@ class OrderController extends Controller
 
       $orderId = $orderModel->insert([
         'user_id' => session('user_id'),
+        'dni_cliente' => $dni,
         'total' => $totalFinal,
         'status' => $orderStatus,
         'payment_method' => $paymentMethod,

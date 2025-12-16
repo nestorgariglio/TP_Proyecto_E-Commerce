@@ -9,6 +9,7 @@ class OrderModel extends Model
   protected $primaryKey = 'id';
   protected $allowedFields = [
     'user_id', 
+    'dni_cliente',
     'total', 
     'status',
     'payment_method',

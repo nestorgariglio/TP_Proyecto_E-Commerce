@@ -13,6 +13,13 @@
       <div class="col-12 col-md-7">
 
         <div class="card mb-4 shadow-sm">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-white fw-bold">Datos de Facturación</div>
+            <div class="card-body">
+                <label for="dni" class="form-label">DNI / CUIT</label>
+                <input type="text" name="dni" id="dni" class="form-control" placeholder="Sin puntos" required value="<?= old('dni') ?>">
+            </div>
+          </div>
           <div class="card-header bg-white fw-bold">
             1. Método de Entrega
           </div>

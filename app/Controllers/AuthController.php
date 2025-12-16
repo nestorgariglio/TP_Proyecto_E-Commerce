@@ -13,14 +13,38 @@ class AuthController extends Controller
   }
 
   public function register() {
-
-    if (!$this->validate([
+    $rules = [
       'name'            => 'required|min_length[3]',
       'email'           => 'required|valid_email|is_unique[users.email]',
       'password'        => 'required|min_length[8]',
       'confirmPassword' => 'required|matches[password]',
       'terms'           => 'required'
-    ])) return redirect()->back()->withInput()->with('errors', $this->validator->getErrors()); 
+    ];
+
+    $messages = [
+      'name' => [
+        'required'      => 'El nombre es obligatorio.',
+        'min_length[3]' => 'El nombre debe tener al menos 3 caracteres.',
+      ],
+      'email' => [
+        'required'    => 'El email es obligatorio.',
+        'valid_email' => 'Ingresa un email válido (ej: nombre@gmail.com).',
+        'is_unique'   => 'Este email ya está registrado.'
+      ],
+      'password' => [
+        'required'      => 'La contraseña es obligatoria.',
+        'min_length[8]' => 'La contraseña debe tener al menos 8 caracteres.',
+      ],
+      'confirmPassword' => [
+        'required'  => 'Debe confirmar su contraseña.',
+        'matches'   => 'Las contraseñas no coinciden'
+      ],
+      'terms' => [
+        'required'  => 'Debe aceptar los términos y condiciones.'
+      ]
+    ];
+
+    if (!$this->validate($rules, $messages)) return redirect()->back()->withInput()->with('errors', $this->validator->getErrors()); 
 
     $userModel = new UserModel();
     $userData = [
@@ -74,6 +98,23 @@ class AuthController extends Controller
   } 
  
   public function login() {
+    $rules = [
+      'email'           => 'required|valid_email|is_unique[users.email]',
+      'password'        => 'required|min_length[8]',
+    ];
+
+    $messages = [
+      'email' => [
+        'required'    => 'El email es obligatorio.',
+        'valid_email' => 'Ingresa un email válido (ej: nombre@gmail.com).',
+        'is_unique'   => 'Este email ya está registrado.'
+      ],
+      'password' => [
+        'required'      => 'La contraseña es obligatoria.',
+        'min_length[8]' => 'La contraseña debe tener al menos 8 caracteres.',
+      ],
+    ];
+
     $userModel = new UserModel();
     $email = $this->request->getPost('email');
     $password = $this->request->getPost('password');
@@ -91,9 +132,10 @@ class AuthController extends Controller
         'isLoggedIn' => true,
       ]);
       return redirect()->to('/')->with('success', 'Inicio de sesión exitoso.');
-    } else {
-      return redirect()->to('/login')->with('error', 'Credenciales incorrectas. Por favor, intente de nuevo.');
+    } else if (!$this->validate($rules, $messages)) {
+      return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
     }
+    return redirect()->to('/login')->with('error', 'Credenciales incorrectas. Por favor, intente de nuevo.');
   }
 
   public function logout() {

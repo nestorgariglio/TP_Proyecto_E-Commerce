@@ -12,8 +12,23 @@ class ContactController extends Controller {
       'message' => 'required|min_length[10]'
     ];
 
-    if (!$this->validate($rules)) {
-      return redirect()->back()->withInput()->with('error', 'Por favor complete todos los campos correctamente.');
+    $messages = [
+      'name' => [
+        'required'      => 'El nombre es obligatorio.',
+        'min_length[3]' => 'El nombre debe tener al menos 3 catacteres.',
+      ],
+      'email' => [
+        'required'    => 'El email es obligatorio.',
+        'valid_email' => 'Ingresa un email válido (ej: nombre@gmail.com).',
+      ],
+      'message' => [
+        'required'    => 'El mensaje es obligatorio',
+        'min_length'  => 'El mensaje debe tener al menos 10 caracteres.'
+      ]
+    ];
+
+    if (!$this->validate($rules, $messages)) {
+      return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
     }
 
     $emailService = \Config\Services::email();

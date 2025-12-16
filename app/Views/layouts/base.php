@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
   <title>Quelac</title>
 </head>
-<body class="container-fluid d-flex flex-column align-items-center p-0 m-0">
+<body class="min-vh-100 container-fluid d-flex flex-column align-items-center p-0 m-0">
   <?= view('layouts/header') ?>
 
   <!-- Toast  -->
-  <div aria-live="polite" aria-atomic="true" class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080; min-width: 300px;">
+  <div aria-live="polite" aria-atomic="true" class="position-fixed top-0 end-0 p-3" style="z-index: 1080; min-width: 300px;">
     <?php if (session('error')): ?>
       <div class="toast align-items-center text-bg-danger border-0 show" role="alert" id="toastError" data-bs-delay="4000">
         <div class="d-flex">
@@ -36,7 +36,9 @@
   </div>
 
   <!-- Render de las views -->
-  <?= $this->renderSection('content') ?>
+  <main class="w-100 flex-grow-1">
+    <?= $this->renderSection('content') ?>
+  </main>
 
   <?= view('layouts/footer')?>
 

@@ -16,7 +16,7 @@
               id="name" 
               name="name" 
               placeholder="Ingrese su nombre completo" 
-              required
+            
               value="<?= old('name')?>"
             >
             <?php if(session('errors.name')): ?>
@@ -27,33 +27,66 @@
           <div class="mb-3 w-75 w-sm-100">
             <label for="email" class="form-label">Correo Electrónico</label>
             <input 
-              type="email" 
+              type="text" 
               class="form-control" 
               id="email" 
               name="email" 
               placeholder="Ingrese su correo electrónico" 
-              required
+            
               value="<?= old('email') ?>"
             >
             <?php if(session('errors.email')): ?>
-              <div></div>
+              <div class="text-danger small"><?= session('errors.email')?></div>
             <?php endif; ?>
           </div>
 
           <div class="mb-3 w-75">
             <label for="password" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>
+            <input 
+              type="password" 
+              class="form-control" 
+              id="password" 
+              name="password" 
+              placeholder="Ingrese su contraseña"
+              value="<?= old('password') ?>"
+            >
+            <?php if(session('errors.password')): ?>
+              <div class="text-danger small"><?= session('errors.password')?></div>
+            <?php endif; ?>
           </div>
 
           <div class="mb-3 w-75">
             <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
-            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirme su contraseña" required>
+            <input 
+              type="password" 
+              class="form-control" 
+              id="confirmPassword" 
+              name="confirmPassword" 
+              placeholder="Confirme su contraseña"
+              value="<?= old('confirmPassword') ?>"
+            >
+            <?php if(session('errors.confirmPassword')): ?>
+              <div class="text-danger small"><?= session('errors.confirmPassword')?></div>
+            <?php endif; ?>
           </div>
 
           <div class="mb-2 form-check w-75">
-            <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
-            <label class="form-check
-            -label" for="terms">Acepto los <a href="<?= site_url('terms') ?>">Términos y Condiciones</a></label>
+            <input 
+              type="checkbox" 
+              class="form-check-input" 
+              id="terms" 
+              name="terms"
+              value="<?= old('terms')?>"
+            >
+            <label 
+              class="form-check-label" 
+              for="terms"
+            >
+              Acepto los <a href="<?= site_url('terms') ?>">Términos y Condiciones</a>
+            </label>
+            <?php if(session('errors.terms')): ?>
+              <div class="text-danger small"><?= session('errors.terms')?></div>
+            <?php endif; ?>
           </div>
         </div>
         

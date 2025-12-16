@@ -40,12 +40,33 @@ class AdminProductController extends Controller
       'category'    => 'required'
     ];
 
+    $messages = [
+      'name' => [
+        'required'    => 'El nombre es obligatorio.',
+        'min_length'  => 'El nombre debe tener al menos 3 caracteres.'
+      ],
+      'description' => [
+        'required'  => 'La descripción es obligatoria.',
+      ],
+      'price' => [
+        'required'  => 'El precio es obligatorio.',
+        'numeric'   => 'El precio debe contener solo números.'
+      ],
+      'stock' => [
+        'required'  => 'El stock es obligatorio.',
+        'interger'  => 'El stock debe contener solo números enteros.'
+      ],
+      'category' => [
+        'required'  => 'Selecciona una categoría.'
+      ]
+    ];
+
     if ($this->request->getFile('image_file')->isValid()) {
       $rules['image_file'] = 'is_image[image_file]|max_size[image_file,2048]';
     }
 
-    if (!$this->validate($rules)) {
-      return redirect()->back()->withInput()->with('error', 'Por favor revise los datos ingresados.');
+    if (!$this->validate($rules, $messages)) {
+      return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
     }
 
     $productModel = new ProductModel();

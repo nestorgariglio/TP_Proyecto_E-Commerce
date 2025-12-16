@@ -9,11 +9,31 @@
           <div class="w-100 d-flex flex-column align-items-center gap-3">
             <div class="mb-3 w-75 w-sm-100">
               <label for="email" class="form-label">Correo Electrónico</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su correo electrónico" required>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="email" 
+                name="email" 
+                placeholder="Ingrese su correo electrónico"
+                value="<?= old('email')?>"
+              >
+              <?php if(session('errors.email')): ?>
+                <div class="text-danger small"><?= session('errors.email')?></div>
+              <?php endif; ?>
             </div>
             <div class="mb-3 w-75">
               <label for="password" class="form-label">Contraseña</label>
-              <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                name="password" 
+                placeholder="Ingrese su contraseña"
+                value="<?= old('password')?>"
+              >
+              <?php if(session('errors.password')): ?>
+                <div class="text-danger small"><?= session('errors.password')?></div>
+              <?php endif; ?>
             </div>
           </div>
           <button type="submit" class="btn btn-primary btn-lg " style="background-color: #cf172e;">Iniciar Sesión</button>

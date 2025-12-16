@@ -85,6 +85,9 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="name" name="name" placeholder="Tu nombre" value="<?= old('name') ?>">
                         <label for="name">Nombre Completo</label>
+                        <?php if(session('errors.name')): ?>
+                          <div class="text-danger small"><?= session('errors.name')?></div>
+                        <?php endif; ?>
                     </div>
                 </div>
                 
@@ -92,6 +95,9 @@
                     <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="email" name="email" placeholder="nombre@ejemplo.com" value="<?= old('email') ?>">
                         <label for="email">Correo Electrónico</label>
+                        <?php if(session('errors.email')): ?>
+                          <div class="text-danger small"><?= session('errors.email')?></div>
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -99,6 +105,9 @@
                     <div class="form-floating mb-3">
                         <textarea class="form-control" placeholder="Deja tu mensaje aquí" id="message" name="message" style="height: 150px"><?= old('message') ?></textarea>
                         <label for="message">¿En qué podemos ayudarte?</label>
+                        <?php if(session('errors.message')): ?>
+                          <div class="text-danger small"><?= session('errors.message')?></div>
+                        <?php endif; ?>
                     </div>
                 </div>
                 
