@@ -26,12 +26,23 @@ class OrderController extends Controller
     }
 
     $orderModel = new OrderModel();
-    $orders = $orderModel
-      ->where('user_id', session('user_id'))
-      ->orderBy('created_at', 'DESC')
-      ->findAll();
+    $fromDate = $this->request->getGet('from');
+    $toDate = $this->request->getGet('to');
 
-    echo view('orders', ['orders' => $orders]);
+    $builder = $orderModel->where('user_id', session('user_id'))
+                          ->orderBy('created_at', 'DESC');
+    
+    if ($fromDate && $toDate) {
+      $builder->where('created_at >=', value: $fromDate . ' 00:00:00')
+              ->where('created_at <=', value: $toDate . ' 23:59:59');
+    }
+    $orders = $builder->findAll();
+
+    echo view('orders', [
+      'orders'  => $orders,
+      'from'    => $fromDate,
+      'to'      => $toDate
+    ]);
   }
 
   // Muestra el detalle de una orden específica
@@ -74,7 +85,7 @@ class OrderController extends Controller
     $rules = [
       'dni'             => 'required|numeric|min_length[7]|max_length[8]',
       'shipping_method' => 'required',
-      'payment_method'  => 'required'
+      'payment_method'  => 'required',
     ];
 
     $message = [
@@ -89,7 +100,7 @@ class OrderController extends Controller
     ];
 
     if (!$this->validate($rules, $message)) {
-      return redirect()->back()->withInput()->with('error', $this->validator->getErrors());
+      return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
     }
 
     $dni = $this->request->getPost(('dni'));

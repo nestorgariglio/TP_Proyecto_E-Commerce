@@ -8,7 +8,10 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'ViewsController::principal');
 $routes->get('/about', 'ViewsController::about');
 $routes->get('/marketing', 'ViewsController::marketing');
+$routes->get('/privacy', 'ViewsController::privacy');
 $routes->get('/terms', 'ViewsController::terms');
+$routes->get('/profile', 'AuthController::profile');
+$routes->post('/profile/edit', 'AuthController::updateProfile');
 
 // Rutas de contacto
 $routes->get('/contact', 'ViewsController::contact');
@@ -26,20 +29,25 @@ $routes->get('/logout', 'AuthController::logout');
 $routes->get('/catalog', 'ProductController::catalog');
 $routes->get('/product/(:num)', 'ProductController::detail/$1');
 
-// Rutas para el carrito
-$routes->get('/cart', 'CartController::index');
-$routes->post('/cart/add/(:num)', 'CartController::add/$1');
-$routes->post('/cart/update/(:num)', 'CartController::update/$1');
-$routes->post('/cart/remove/(:num)', 'CartController::remove/$1');
-$routes->get('/cart/clear', 'CartController::clear');
 
-// Rutas del checkhout
-$routes->get('/checkout', 'OrderController::checkout');
-$routes->post('/checkout/process', 'OrderController::process');
 
-// Rutas para los comprobantes
-$routes->get('/orders', 'OrderController::list');
-$routes->get('/orders/(:num)', 'OrderController::detail/$1');
+// Rutas del cliente
+$routes->group('', ['filter' => 'clientAuth'], function($routes){
+  // Rutas para el carrito
+  $routes->get('cart', 'CartController::index');
+  $routes->post('cart/add/(:num)', 'CartController::add/$1');
+  $routes->post('cart/update/(:num)', 'CartController::update/$1');
+  $routes->post('cart/remove/(:num)', 'CartController::remove/$1');
+  $routes->get('cart/clear', 'CartController::clear');
+
+  // Rutas para los comprobantes de compra
+  $routes->get('orders', 'OrderController::list');
+  $routes->get('orders/(:num)', 'OrderController::detail/$1');
+
+  // Rutas del checkhout
+  $routes->get('checkout', 'OrderController::checkout');
+  $routes->post('checkout/process', 'OrderController::process');
+});
 
 //Rutas del Admin
 $routes->group('admin', ['filter' => 'adminAuth'], function($routes){

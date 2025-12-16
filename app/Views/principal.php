@@ -31,6 +31,36 @@
     <?php endforeach; ?>
     </div>
   </div>
+
+  <?php if (!empty($featuredProducts)): ?>
+  <div class="py-5 container bg-light rounded-4 my-5">
+      <div class="d-flex justify-content-between align-items-center mb-4 px-3">
+          <h3 class="fw-bold m-0">Productos Destacados</h3>
+          <a href="<?= site_url('catalog') ?>" class="btn btn-outline-dark btn-sm">Ver Todo</a>
+      </div>
+      
+      <div class="row px-3 g-4">
+          <?php foreach($featuredProducts as $prod): ?>
+              <div class="col-12 col-sm-6 col-lg-3">
+                  <div class="card h-100 border-0 shadow-sm hover-effect">
+                      <img src="<?= esc($prod['image']) ?>" class="card-img-top" style="height: 200px; object-fit: cover;" alt="...">
+                      <div class="card-body d-flex flex-column">
+                          <h5 class="card-title fs-6 fw-bold"><?= esc($prod['name']) ?></h5>
+                          <p class="card-text text-muted small text-truncate"><?= esc($prod['description']) ?></p>
+                          <div class="mt-auto d-flex justify-content-between align-items-center">
+                              <span class="fw-bold text-danger">$<?= esc($prod['price']) ?></span>
+                              <a href="<?= site_url('product/'.$prod['id']) ?>" class="btn btn-sm btn-dark rounded-circle">
+                                  <i class="bi bi-eye"></i>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          <?php endforeach; ?>
+      </div>
+  </div>
+  <?php endif; ?>
+
   <div class="py-3 container">
     <h3 class="w-100 text-start fs-4 fw-bold">Recetas con Nuestros Productos</h3>
     <div class="row align-items-center py-4">
@@ -43,6 +73,7 @@
       </div>
     </div>
   </div>
+
   <div class="py-2 container">
     <h3 class="w-100 text-start fs-4 fw-bold">Sobre Nosotros</h3>
     <p>En Quelac nos dedicamos a la comercialización de quesos, fiambres y productos refrigerados premium. Ofrecemos calidad, frescura y precios competitivos, con una atención cercana y personalizada que garantiza la mejor experiencia para tu hogar o negocio.</p>

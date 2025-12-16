@@ -142,4 +142,61 @@ class AuthController extends Controller
     session()->destroy();
     return redirect()->to('/');
   }
+
+  public function profile() {
+    if (!session('isLoggedIn')) return redirect()->to('/login');
+
+    $userModel = new UserModel();
+    $user = $userModel->find(session('user_id'));
+
+    return view('profile', ['user' => $user]);
+  }
+
+  public function updateProfile() {
+    if (!session('isLoggedIn')) return redirect()->to('/login');
+
+    $userId = session('user_id');
+    $userModel = new UserModel();
+
+    $rules = [
+      'name' => 'required|min_length[3]'
+    ];
+
+    $messages = [
+      'name' => [
+        'required'    => 'El nombre es requerido.',
+        'min_length'  => 'El nombre debe tener al menos 3 caracteres.'
+      ],
+      'password' => [
+        'min_length'  => 'La contraseña debe tener al menos 8 caracteres.'
+      ],
+      'confirm_password' => [
+        'matches' => 'Las contraseñas deben ser iguales.'
+      ]
+    ];
+
+    $newPass = $this->request->getPost('password');
+    if (!empty($newPass)) {
+      $rules['password'] = 'min_length[8]';
+      $rules['confirm_password'] = 'matches[password]';
+    }
+
+    if (!$this->validate($rules, $messages)) {
+      return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+    }
+
+    $data = [
+      'name'  => $this->request->getPost('name')
+    ];
+
+    if (!empty($newPass)) {
+      $data['password'] = password_hash($newPass, PASSWORD_BCRYPT);
+    }
+
+    $userModel->update($userId, $data);
+
+    session()->set('user_name', $data['name']);
+
+    return redirect()->to('/profile')->with('success', 'Datos actualizados correctamente.');
+  }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\ProductModel;
+
 class ViewsController extends BaseController
 {
   public function principal() {
@@ -26,7 +28,16 @@ class ViewsController extends BaseController
         'filter' => 'Panificado'
       ]
     ];
-    echo view('principal', ['categories' => $featuredCategories]);
+
+    $productModel = new ProductModel();
+    $featuredProducts = $productModel->where('is_active', 1)
+                                     ->orderBy('RAND()')
+                                     ->limit(4)
+                                     ->findAll();
+    return view('principal', [
+      'categories' => $featuredCategories,
+      'featuredProducts' => $featuredProducts
+    ]);
   }
 
   public function about() {
@@ -43,5 +54,9 @@ class ViewsController extends BaseController
 
   public function marketing() {
     echo view('marketing');
+  }
+
+  public function privacy() {
+    echo view('privacy');
   }
 }

@@ -12,7 +12,7 @@
   <?= view('layouts/header') ?>
 
   <!-- Toast  -->
-  <div aria-live="polite" aria-atomic="true" class="position-fixed top-0 end-0 p-3" style="z-index: 1080; min-width: 300px;">
+  <div aria-live="polite" aria-atomic="true" class="position-fixed end-0 p-3" style="z-index: 1080; min-width: 300px; top: 50px;">
     <?php if (session('error')): ?>
       <div class="toast align-items-center text-bg-danger border-0 show" role="alert" id="toastError" data-bs-delay="4000">
         <div class="d-flex">
@@ -48,7 +48,7 @@
     document.addEventListener('DOMContentLoaded', function () {
       var toastElList = [].slice.call(document.querySelectorAll('.toast'));
       toastElList.forEach(function (toastEl) {
-        var toast = new bootstrap.Toast(toastEl, { delay: 2000 });
+        var toast = new bootstrap.Toast(toastEl, { delay: 4000 });
         toast.show();
       });
     });

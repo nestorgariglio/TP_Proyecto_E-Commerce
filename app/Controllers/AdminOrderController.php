@@ -12,9 +12,25 @@ class AdminOrderController extends Controller
 {
   public function index() {
     $orderModel = new OrderModel();
-    $orders = $orderModel->getOrdersWithUser();
+    $fromDate = $this->request->getGet('from');
+    $toDate = $this->request->getGet('to');
 
-    echo view('admin_orders', ['orders' => $orders]);
+    $builder = $orderModel->select('orders.*, users.name as user_name')
+                          ->join('users', 'users.id = orders.user_id')
+                          ->orderBy('orders.created_at', 'DESC');
+
+    if ($fromDate && $toDate) {
+      $builder->where('orders.created_at >=', $fromDate . ' 00:00:00')
+              ->where('orders.created_at <=', $toDate . ' 23:59:59');
+    }
+
+    $orders = $builder->findAll();
+
+    echo view('admin_orders', [
+      'orders'  => $orders,
+      'from'    => $fromDate,
+      'to'      => $toDate
+    ]);
   }
 
 

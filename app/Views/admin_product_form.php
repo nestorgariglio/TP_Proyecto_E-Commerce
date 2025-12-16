@@ -2,7 +2,6 @@
 <?= $this->section('content')?>
 
 <section class="container" style="padding-top: 8rem; padding-bottom: 4rem; max-width: 600px;">
-  <?php if(session('user_role') == 'admin') :?>
   <h2 class="fw-bold mb-4"><?= isset($product) ? 'Editar' : 'Agregar' ?> Producto</h2>
 
   <form method="post" enctype="multipart/form-data" action="<?= isset($product) ? site_url('admin/products/update/'.$product['id']) : site_url('admin/products/save') ?>" class="card p-4 shadow-sm">
@@ -28,7 +27,7 @@
         name="description" 
         rows="3"
       >
-        <?= isset($product) ? esc($product['description']) : old('description') ?>
+        <?= isset($product) ? esc($product['description']) : '' ?>
       </textarea>
       <?php if(session('errors.description')): ?>
         <div class="text-danger small"><?= session('errors.description')?></div>
@@ -108,16 +107,6 @@
       <button type="submit" class="btn btn-primary" style="background-color: #cf172e;"><?= isset($product) ? 'Actualizar' : 'Agregar' ?></button>
     </div>
   </form>
-    <?php else: ?>
-    <div class="d-flex justify-content-center align-items-center mb-4">
-      <div class="card p-3">
-        <h3 class="fs-4 p-2">
-          Usted no tiene acceso a este recurso.
-        </h3>
-        <a href="<?= site_url('/')?>" class="btn bg-primary-color text-white">Volver</a>
-      </div>
-    </div>
-  <?php endif; ?>
 </section>
 
 <?= $this->endSection()?>

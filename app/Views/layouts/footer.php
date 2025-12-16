@@ -1,7 +1,7 @@
 <footer class="w-100 d-flex align-items-center justify-content-center gap-3 py-4" style="background-color: #cf172e;">
   <div class="d-flex flex-column align-items-center gap-3" style="width: 58rem;">
     <div class="w-100 d-flex justify-content-between text-center">
-      <a href="#" class="link-underline-opacity-0 link-secondary text-white">Política de Privacidad</a>
+      <a href="<?= site_url('privacy')?>" class="link-underline-opacity-0 link-secondary text-white">Política de Privacidad</a>
       <a href="<?= site_url('terms')?>" class="link-underline-opacity-0 link-secondary text-white">Términos y Condiciones</a>
       <a href="<?= site_url('marketing')?>" class="link-underline-opacity-0 link-secondary text-white">Envíos y Pagos</a>
     </div>

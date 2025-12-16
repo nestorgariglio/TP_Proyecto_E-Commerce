@@ -30,6 +30,7 @@
                 <i class="fa-solid fa-user" style="font-size: 13px;"></i>
               </button>
               <ul class="dropdown-menu dropdown" aria-labelledby="userDropdown">
+                <li><a href="<?= site_url('profile')?>" class="dropdown-item">Perfil</a></li>
                 <?php if(session('user_role') === 'admin'): ?>
                   <li><a href="<?= site_url('admin/products')?>" class="dropdown-item">Gestión Productos</a></li>
                   <li><a href="<?= site_url('admin/users')?>" class="dropdown-item">Gestión Usuarios</a></li>
