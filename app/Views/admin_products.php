@@ -24,7 +24,7 @@
           <?php if(!empty($products)): ?>
             <?php foreach($products as $product): ?>
               <tr>
-                <td>1</td>
+                <td><?=esc($product['id'])?></td>
                 <td>
                   <img src="<?= esc($product['image'])?>" alt="<?= esc($product['name'])?>" style="width: 60px; height: 60px; object-fit: cover;" class="rounded shadow-sm">
                 </td>

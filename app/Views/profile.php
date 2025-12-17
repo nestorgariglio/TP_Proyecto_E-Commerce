@@ -17,7 +17,7 @@
                         <span class="badge bg-secondary"><?= ucfirst(esc($user['role'])) ?></span>
                     </div>
 
-                    <form action="<?= site_url('profile/update') ?>" method="post">
+                    <form action="<?= site_url('profile/edit') ?>" method="post">
                         <div class="mb-3">
                             <label class="form-label">Nombre Completo</label>
                             <input type="text" name="name" class="form-control" value="<?= esc($user['name']) ?>">

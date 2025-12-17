@@ -31,9 +31,10 @@
         <h5 class="fw-bold">Detalles</h5>
         <ul>
           <li>Origen: Corrientes, Argentina</li>
-          <li>Peso aproximado: 500g</li>
-          <li>Conservación: Refrigerado</li>
-        </ul>
+          <li>Stock Disponible: <?= esc($product["stock"])?></li>
+          <!-- <li>Peso aproximado: 500g</li> -->
+          <!-- <li>Conservación: Refrigerado</li>
+        </ul> -->
       </div>
       
     </div>

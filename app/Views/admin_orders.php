@@ -56,7 +56,7 @@
               <?php if($order['status'] === 'Pendiente'): ?>
                 <form action="<?= site_url('admin/orders/confirm-payment/' . $order['id']) ?>" method="post" class="d-inline">
                   <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('¿Confirmar pago?')">
-                    $ Confirmar
+                   ✔ Confirmar
                   </button>
                 </form>
               <?php endif; ?>
